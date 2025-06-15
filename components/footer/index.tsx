@@ -12,11 +12,10 @@ const Footer = () => {
   if (isPhone === null) return null;
   const lightMode = theme.background === "#fff";
 
-  // Responsive icon sizes
-  const iconSize = isPhone ? 32 : 48;
-  const githubSize = isPhone ? 36 : 64;
-  const xSize = isPhone ? 28 : 50;
-  const mediumSize = isPhone ? 36 : 64;
+  const iconSize = 48;
+  const githubSize = 64;
+  const xSize = 50;
+  const mediumSize = 64;
 
   return (
     <div
@@ -25,8 +24,8 @@ const Footer = () => {
         alignItems: "center",
         justifyContent: "center",
         width: "100%",
-        gap: isPhone ? "10px" : "20px",
-        padding: isPhone ? "10px 0" : "20px 0",
+        gap: isPhone ? "15px" : "20px",
+        padding: isPhone ? "15px 0" : "20px 0",
       }}
     >
       {/* Email */}

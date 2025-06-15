@@ -6,7 +6,7 @@ const Home = () => {
   if (isPhone === null) return null;
   return (
     <div style={{ display: "flex" }}>
-      <div style={{ flexBasis: "50%" }}>
+      <div style={{ flexBasis: isPhone ? "100%" : "50%" }}>
         <h1 style={{ fontSize: "3.75rem", lineHeight: "3.2rem" }}>
           Shubham Shrivastava
         </h1>
