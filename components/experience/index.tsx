@@ -1,5 +1,6 @@
 import { useTheme } from "@emotion/react";
 import { useIsMobile } from "../../hooks";
+import React from "react";
 
 const Experience = () => {
   const items = [
@@ -96,9 +97,7 @@ const Experience = () => {
   );
 };
 
-export default Experience;
-
-// ...existing code...
+export default React.memo(Experience);
 
 const ExpComp = ({
   exp,
