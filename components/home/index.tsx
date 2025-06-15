@@ -1,4 +1,9 @@
+import React from "react";
+import { useIsMobile } from "../../hooks";
+
 const Home = () => {
+  const isPhone = useIsMobile();
+
   return (
     <div style={{ display: "flex" }}>
       <div style={{ flexBasis: "50%" }}>
@@ -18,28 +23,30 @@ const Home = () => {
           meaningful impact through code.
         </p>
       </div>
-      <div
-        style={{
-          flexBasis: "50%",
-          display: "flex",
-          justifyContent: "center",
-          marginTop: "20px",
-        }}
-      >
-        <img
-          src="/my-image.jpeg"
-          alt="Shubham Shrivastava"
+      {!isPhone && (
+        <div
           style={{
-            width: "300px",
-            height: "300px",
-            objectFit: "cover",
-            borderRadius: "50%",
-            boxShadow: "0 4px 24px rgba(0,0,0,0.5)",
-            border: "4px solid #fff",
-            background: "#eee",
+            flexBasis: "50%",
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "20px",
           }}
-        />
-      </div>
+        >
+          <img
+            src="/my-image.jpeg"
+            alt="Shubham Shrivastava"
+            style={{
+              width: "300px",
+              height: "300px",
+              objectFit: "cover",
+              borderRadius: "50%",
+              boxShadow: "0 4px 24px rgba(0,0,0,0.5)",
+              border: "4px solid #fff",
+              background: "#eee",
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 };

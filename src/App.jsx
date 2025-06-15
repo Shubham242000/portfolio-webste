@@ -6,9 +6,9 @@ import { DarkModeSwitch } from "react-toggle-dark-mode";
 import { globalStyles } from "./globalStyle";
 import Home from "../components/home";
 import Footer from "../components/footer";
+import Skills from "../components/skills";
 
 //dynamic imports.
-const Skills = React.lazy(() => import("../components/skills"));
 const Experience = React.lazy(() => import("../components/experience"));
 
 const lightTheme = {
