@@ -135,7 +135,7 @@ const Footer = () => {
         href="https://leetcode.com/u/Shubham_242000/"
         target="_blank"
         rel="noopener noreferrer"
-        style={{ display: "inline-block" }}
+        style={{ display: "inline-block", all: "unset" }}
       >
         <svg
           className="footer-svg"
