@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const MOBILE_BREAKPOINT = 768;
+const MOBILE_BREAKPOINT = 1024;
 
 export function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false);
@@ -9,7 +9,7 @@ export function useIsMobile() {
   useEffect(() => {
     setHasMounted(true);
     function handleResize() {
-      setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
+      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
     }
     handleResize(); // set initial value on mount
     window.addEventListener("resize", handleResize);
