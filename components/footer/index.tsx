@@ -9,6 +9,7 @@ interface ITheme {
 const Footer = () => {
   const theme = useTheme() as ITheme;
   const isPhone = useIsMobile();
+  if (!isPhone) return <></>;
   const lightMode = theme.background === "#fff";
 
   // Responsive icon sizes

@@ -52,7 +52,7 @@ const Skills = () => {
   }, []);
 
   const isPhone = useIsMobile();
-
+  if (!isPhone) return <></>;
   return (
     <div
       style={{
