@@ -9,7 +9,7 @@ interface ITheme {
 const Footer = () => {
   const theme = useTheme() as ITheme;
   const isPhone = useIsMobile();
-  if (!isPhone) return <></>;
+  if (isPhone === null) return null;
   const lightMode = theme.background === "#fff";
 
   // Responsive icon sizes
@@ -32,7 +32,7 @@ const Footer = () => {
       {/* Email */}
       <a
         href="mailto:shubhamshrivastava2000@gmail.com"
-        style={{ display: "inline-block" }}
+        style={{ display: "inline-block", all: "unset" }}
       >
         <svg
           className="footer-svg"

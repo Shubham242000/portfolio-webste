@@ -47,7 +47,7 @@ const Experience = () => {
     },
   ];
   const isPhone = useIsMobile();
-  if (!isPhone) return <></>;
+  if (isPhone === null) return null;
   return (
     <div>
       <div
