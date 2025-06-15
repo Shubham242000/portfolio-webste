@@ -46,6 +46,17 @@ const Experience = () => {
            For the company’s internal dashboards, I developed and maintained a library of reusable React components, improving UI consistency and performance. 
            Through memoization and render optimizations, I reduced re-renders and enhanced responsiveness in key workflows.`,
     },
+    {
+      header: "Web Development Intern - Nirvann Applications Private Limited",
+      dur: "February 2021 - April 2021",
+      desc: `At an early-stage startup, I worked closely with founders and CTOs to define and standardize the digital presence for three unique brands. 
+             <br />
+             <br /> 
+            I built fully responsive UIs using React, Bootstrap, and vanilla JavaScript, ensuring cross-browser compatibility and accessibility.
+             <br />
+             <br /> 
+            By leveraging memoization and dynamic imports, I reduced initial load times by 30%, resulting in smoother performance on low-bandwidth networks. Post-internship, I continued as a core contributor, mentoring new interns and driving UI performance improvements across key modules.`,
+    },
   ];
   const isPhone = useIsMobile();
   if (isPhone === null) return null;

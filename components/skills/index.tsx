@@ -1,5 +1,6 @@
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import React, { useMemo } from "react";
+import { useTheme } from "@emotion/react";
 import { useIsMobile } from "../../hooks";
 
 const Skills = () => {
@@ -86,8 +87,20 @@ const SkillComp = ({
 }: {
   skill: { header: string; items: string[] };
 }) => {
+  const theme = useTheme() as { background: string; color: string };
+  const bg = theme.background === "#fff" ? "#f5f7fa" : "#2d3440";
+
   return (
-    <div style={{ lineHeight: "1.2rem" }}>
+    <div
+      style={{
+        lineHeight: "1.2rem",
+        background: bg,
+        borderRadius: "10px",
+        padding: "0.6rem",
+        marginBottom: "0.6rem",
+        color: theme.color,
+      }}
+    >
       <h3 style={{ fontWeight: 500, margin: "0.5rem 0" }}>{skill.header}</h3>
       <p>
         {skill.items.map((c_skill, idx) => (
