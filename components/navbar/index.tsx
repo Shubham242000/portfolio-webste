@@ -12,14 +12,16 @@ const Navbar = ({ items }: { items: string[] }) => {
         alignItems: "center",
       }}
     >
-      {items.map((item) => (
-        <div
+      {items.map((item) => {
+        let isActive = `/${item.toLowerCase()}` === pathname;
+        if(pathname === "/" && item === "HOME") isActive = true;
+        return <div
           style={{
             cursor: "pointer",
-            color:
-              `/${item.toLowerCase()}` === pathname ? "#0078d4" : "inherit",
+            color: // home === '/'
+            isActive ? "#0078d4" : "inherit",
             alignSelf: "flex-start",
-            fontWeight: `/${item.toLowerCase()}` === pathname ? 700 : 400,
+            fontWeight: isActive ? 700 : 400,
             transition: "color 0.2s",
           }}
           key={item}
@@ -27,7 +29,7 @@ const Navbar = ({ items }: { items: string[] }) => {
         >
           {item}
         </div>
-      ))}
+      })}
     </div>
   );
 };

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ThemeProvider, Global } from "@emotion/react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "../components/navbar";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import { globalStyles } from "./globalStyle";
@@ -24,15 +24,7 @@ function App() {
   const [dark, setDark] = useState(false);
   const theme = dark ? darkTheme : lightTheme;
   const items = ["HOME", "SKILLS", "EXPERIENCE"];
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const url = new URL(window.location.href);
-    const pathname = url.pathname;
-    if (pathname == "/") {
-      navigate("/home", { replace: true });
-    }
-  }, [navigate]);
+ 
 
   return (
     <ThemeProvider theme={theme}>
