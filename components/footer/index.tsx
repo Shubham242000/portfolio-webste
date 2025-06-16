@@ -83,6 +83,7 @@ const Footer = () => {
       {/* Twitter/X */}
       <a
         href="https://x.com/Shubham33683634"
+        
         target="_blank"
         rel="noopener noreferrer"
         style={{ display: "inline-block" }}
