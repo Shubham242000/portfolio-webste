@@ -12,12 +12,12 @@ const Navbar = ({ items }: { items: string[] }) => {
         alignItems: "center",
       }}
     >
-      {items.map((item) => (
-        <div
+     {items.map((item) => {
+        const itemName = item === "" ? "HOME" : item;
+        return <div
           style={{
             cursor: "pointer",
-            color:
-              `/${item.toLowerCase()}` === pathname ? "#0078d4" : "inherit",
+            color: `/${item.toLowerCase()}` === pathname ? "#0078d4" : "inherit",
             alignSelf: "flex-start",
             fontWeight: `/${item.toLowerCase()}` === pathname ? 700 : 400,
             transition: "color 0.2s",
@@ -25,9 +25,9 @@ const Navbar = ({ items }: { items: string[] }) => {
           key={item}
           onClick={() => navigate(`/${item.toLowerCase()}`)}
         >
-          {item}
+          {itemName}
         </div>
-      ))}
+    })}
     </div>
   );
 };
