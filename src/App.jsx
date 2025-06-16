@@ -23,7 +23,7 @@ const darkTheme = {
 function App() {
   const [dark, setDark] = useState(false);
   const theme = dark ? darkTheme : lightTheme;
-  const items = ["HOME", "SKILLS", "EXPERIENCE"];
+  const items = ["", "SKILLS", "EXPERIENCE"];
  
 
   return (
