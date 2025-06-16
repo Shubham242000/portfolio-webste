@@ -71,17 +71,15 @@ const Skills = () => {
       {!isPhone && (
         <div>
           <div style={{ flexBasis: "50%", alignSelf: "flex-start" }}>
-            
-              <DotLottieReact
-                src="https://lottie.host/cfb39f8f-32b4-425d-9d64-bbbc529308f7/XVLOw0zXsE.lottie"
-                loop
-                autoplay
-              />
-            
+            <DotLottieReact
+              src="https://lottie.host/cfb39f8f-32b4-425d-9d64-bbbc529308f7/XVLOw0zXsE.lottie"
+              loop
+              autoplay
+            />
           </div>
           <div
             style={{
-              marginTop : "2rem",
+              marginTop: "2rem",
               display: "flex",
               margin: "auto",
               width: "70%",
@@ -124,7 +122,7 @@ const Skills = () => {
     </div>
   );
 };
-
+//
 export default React.memo(Skills);
 
 const SkillComp = ({
