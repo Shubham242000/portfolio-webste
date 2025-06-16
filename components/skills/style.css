@@ -1,0 +1,46 @@
+.styled-image {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .styled-image:hover {
+    transform: scale(1.1); /* Grow slightly */
+    animation: pulse 0.6s infinite alternate; /* Add pulsing effect */
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1.05);
+    }
+  }
+
+  .tooltip-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip-text {
+    visibility: hidden;
+    background-color: #333; /* Dark background for the tooltip */
+    color: #fff; /* White text */
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 125%; /* Position above the image */
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }

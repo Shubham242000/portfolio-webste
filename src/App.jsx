@@ -29,7 +29,6 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Global styles={globalStyles(theme)} />
-
       <div
         style={{
           display: "flex",

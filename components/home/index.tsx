@@ -4,6 +4,7 @@ import { useIsMobile } from "../../hooks";
 const Home = () => {
   const isPhone = useIsMobile();
   if (isPhone === null) return null;
+
   return (
     <div style={{ display: "flex" }}>
       <div style={{ flexBasis: isPhone ? "100%" : "50%" }}>

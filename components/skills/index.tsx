@@ -2,6 +2,7 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import React, { useMemo } from "react";
 import { useTheme } from "@emotion/react";
 import { useIsMobile } from "../../hooks";
+import "./style.css";
 
 const Skills = () => {
   const skills = useMemo(() => {
@@ -60,7 +61,7 @@ const Skills = () => {
         display: "flex",
       }}
     >
-      <div style={{ flexBasis: isPhone ? "100%" : "50%" }}>
+      <div style={{ flexBasis: isPhone ? "100%" : "80%" }}>
         <h1 style={{ fontSize: "3.75rem", lineHeight: "2rem" }}>Skills</h1>
         {skills.map((skill) => (
           <SkillComp key={`heading-${skill.header}`} skill={skill} />
@@ -68,12 +69,56 @@ const Skills = () => {
       </div>
 
       {!isPhone && (
-        <div style={{ flexBasis: "50%", alignSelf: "flex-start" }}>
-          <DotLottieReact
-            src="https://lottie.host/cfb39f8f-32b4-425d-9d64-bbbc529308f7/XVLOw0zXsE.lottie"
-            loop
-            autoplay
-          />
+        <div>
+          <div style={{ flexBasis: "50%", alignSelf: "flex-start" }}>
+            
+              <DotLottieReact
+                src="https://lottie.host/cfb39f8f-32b4-425d-9d64-bbbc529308f7/XVLOw0zXsE.lottie"
+                loop
+                autoplay
+              />
+            
+          </div>
+          <div
+            style={{
+              marginTop : "2rem",
+              display: "flex",
+              margin: "auto",
+              width: "70%",
+              flexWrap: "wrap", // Allow images to wrap to the next line
+              gap: "20px", // Add spacing between images
+              justifyContent: "center", // Center the images horizontally
+              alignItems: "center", // Align the images vertically
+              padding: "20px", // Add padding around the container
+            }}
+          >
+            {[
+              { src: "./javascript.png", alt: "JavaScript" },
+              { src: "/react.png", alt: "ReactJS" },
+              { src: "/typescript.png", alt: "TypeScript" },
+              { src: "/nextjs.png", alt: "NextJS" },
+              { src: "/html.png", alt: "HTML" },
+              { src: "/css.png", alt: "CSS" },
+              { src: "/cpp.png", alt: "C++" },
+              { src: "/redux.png", alt: "Redux" },
+              { src: "/mui.png", alt: "Material UI" },
+              { src: "/nginx.png", alt: "NGINX" },
+              { src: "/git.png", alt: "Git" },
+              { src: "/azure.png", alt: "Azure" },
+              { src: "/docker.png", alt: "Docker" },
+            ].map((image, index) => (
+              <div key={index} className="tooltip-container">
+                <img
+                  width={50}
+                  height={50}
+                  src={image.src}
+                  alt={image.alt}
+                  className="styled-image"
+                />
+                <span className="tooltip-text">{image.alt}</span>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>
