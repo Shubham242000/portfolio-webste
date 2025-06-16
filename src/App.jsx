@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ThemeProvider, Global } from "@emotion/react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "../components/navbar";
@@ -22,10 +22,24 @@ const darkTheme = {
 
 function App() {
   const [dark, setDark] = useState(false);
+
+  useEffect(() => {
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+    setDark(systemTheme.matches); // Set theme based on system preference
+
+    const handleThemeChange = (e) => {
+      setDark(e.matches);
+    };
+    systemTheme.addEventListener("change", handleThemeChange);
+
+   
+    return () => {
+      systemTheme.removeEventListener("change", handleThemeChange);
+    };
+  }, []);
+
   const theme = dark ? darkTheme : lightTheme;
   const items = ["", "SKILLS", "EXPERIENCE"];
- 
-
   return (
     <ThemeProvider theme={theme}>
       <Global styles={globalStyles(theme)} />
