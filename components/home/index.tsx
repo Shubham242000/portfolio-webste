@@ -15,13 +15,33 @@ const Home = () => {
           Software Development Engineer, Bajaj Finserv Health
         </h2>
         <p style={{ fontSize: "1.25rem" }}>
-          I'm a frontend engineer passionate about building performant,
-          user-centric web applications. With 2+ years of experience, I
-          specialize in React, TypeScript, and scalable architecture. I enjoy
-          solving real-world problems, contributing to design systems, and
-          optimizing performance across Core Web Vitals. As a curious
-          technologist, I’m always exploring innovative ways to create
-          meaningful impact through code.
+          I'm a{" "}
+          <span
+            style={{
+              textDecoration: "underline",
+              textDecorationColor: "#ffc107",
+              textUnderlineOffset: "4px",
+              textDecorationThickness: "3px",
+            }}
+          >
+            frontend engineer
+          </span>{" "}
+          passionate about building performant, user-centric web applications.
+          With 2+ years of experience, I specialize in{" "}
+          <span
+            style={{
+              textDecoration: "underline",
+              textDecorationColor: "#ffc107",
+              textUnderlineOffset: "4px",
+              textDecorationThickness: "3px",
+            }}
+          >
+            ReactJS, NextJS TypeScript, Javascript
+          </span>{" "}
+          and scalable architecture. I enjoy solving real-world problems,
+          contributing to design systems, and optimizing performance across Core
+          Web Vitals. As a curious technologist, I’m always exploring innovative
+          ways to create meaningful impact through code.
         </p>
       </div>
       {!isPhone && (
