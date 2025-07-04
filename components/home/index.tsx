@@ -16,7 +16,6 @@ const Home = () => {
           <span
           // #0078D3
             style={{
-              color: "#0078D3",
               cursor: "pointer",
               textDecorationColor: "#90caf9",
               textUnderlineOffset: "3px",
@@ -37,7 +36,7 @@ const Home = () => {
              
             }}
             onMouseOut={(e) => {
-              e.currentTarget.style.color = "#0078D3";
+              e.currentTarget.style.color = "inherit";
               
             }}
           >
