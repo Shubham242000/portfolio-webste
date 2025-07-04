@@ -5,6 +5,16 @@ import React from "react";
 const Experience = () => {
   const items = [
     {
+      header: "Software Development Engineer - 2 - Tellius",
+      desc: `Recently joined the team at Tellius, currently working Kaiya — An AI-powered analytics assistant focused on conversational data exploration.
+        <br />
+        <br />`,
+      dur: "June 2025 – Present",
+      imgSrc: "https://cdn.prod.website-files.com/67fcfe6c0c7705918e4d7984/67ffc75fd418f7da8a28f65b_fav.svg",
+      imgAlt: "Tellius"
+    }
+    ,
+    {
       header: "Sofware Development Engineer - Bajaj Finserv Health Limited",
       desc: `Over the last 2+ years, I’ve built fast and scalable web applications focused on performance, SEO, and user experience. 
             I implemented Incremental Static Regeneration using Next.js, improving load times by 70%,
@@ -21,6 +31,8 @@ const Experience = () => {
             I also independently built a complex healthcare workflow module and helped migrate a monolithic app into a 
             Microfrontend architecture to improve scalability and team autonomy.`,
       dur: "August 2023 - Present",
+      imgSrc: "https://www.bajajfinservhealth.in/favicon.ico",
+      imgAlt: "Bajaj Finserv Health"
     },
     {
       header: "Sofware Development Intern - Bajaj Finserv Health Limited",
@@ -32,6 +44,8 @@ const Experience = () => {
               <br />
               <br />
               Using tools like React Profiler and custom hooks, I reduced unnecessary re-renders and improved overall responsiveness. To ensure long-term maintainability, I standardized the codebase with reusable context providers, consistent error handling, and server API wrappers to simplify data fetching across the app.`,
+      imgSrc: "https://www.bajajfinservhealth.in/favicon.ico",
+      imgAlt: "Bajaj Finserv Health"
     },
     {
       header: "Web Development Intern - Robofied",
@@ -45,6 +59,8 @@ const Experience = () => {
             <br />
            For the company’s internal dashboards, I developed and maintained a library of reusable React components, improving UI consistency and performance. 
            Through memoization and render optimizations, I reduced re-renders and enhanced responsiveness in key workflows.`,
+      imgSrc: "https://avatars.githubusercontent.com/u/46285577?s=200&v=4",
+      imgAlt: "Robofied"
     },
     {
       header: "Web Development Intern - Nirvann Applications Private Limited",
@@ -56,6 +72,8 @@ const Experience = () => {
              <br />
              <br /> 
             By leveraging memoization and dynamic imports, I reduced initial load times by 30%, resulting in smoother performance on low-bandwidth networks. Post-internship, I continued as a core contributor, mentoring new interns and driving UI performance improvements across key modules.`,
+      imgSrc: "https://utsavapp.in/favicon.ico",
+      imgAlt: "Utsav App"
     },
   ];
   const isPhone = useIsMobile();
@@ -113,7 +131,10 @@ export default React.memo(Experience);
 const ExpComp = ({
   exp,
 }: {
-  exp: { header: string; desc: string; dur: string };
+  exp: {
+    header: string; desc: string; dur: string, imgSrc: string;
+    imgAlt: string;
+  };
 }) => {
   const isPhone = useIsMobile();
   const theme = useTheme() as {
@@ -140,6 +161,17 @@ const ExpComp = ({
           }}
         >
           {exp.header}
+          <img
+            src={exp.imgSrc ?? ""}
+            alt={exp.imgAlt ?? ""}
+            style={{
+              width: 24,
+              height: 24,
+              padding: "0 5px",
+              marginRight: 6,
+              verticalAlign: "middle",
+            }}
+          />
         </h3>
         {!isPhone && (
           <span
