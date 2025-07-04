@@ -12,8 +12,7 @@ const Experience = () => {
       dur: "June 2025 – Present",
       imgSrc: "https://cdn.prod.website-files.com/67fcfe6c0c7705918e4d7984/67ffc75fd418f7da8a28f65b_fav.svg",
       imgAlt: "Tellius"
-    }
-    ,
+    },
     {
       header: "Sofware Development Engineer - Bajaj Finserv Health Limited",
       desc: `Over the last 2+ years, I’ve built fast and scalable web applications focused on performance, SEO, and user experience. 
