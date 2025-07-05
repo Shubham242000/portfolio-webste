@@ -53,7 +53,7 @@ function App() {
       >
         <Navbar items={items} />
         <DarkModeSwitch
-          style={{ marginBottom: "2rem" }}
+          style={{ marginBottom: "2rem", cursor : "pointer" }}
           checked={dark}
           onChange={() => setDark(!dark)}
           size={40}
