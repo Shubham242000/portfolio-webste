@@ -6,7 +6,7 @@ const Experience = () => {
   const items = [
     {
       header: "Software Development Engineer - 2 - Tellius",
-      desc: `Recently joined the team at Tellius, currently working Kaiya — An AI-powered analytics assistant focused on conversational data exploration.
+      desc: `Recently joined the team at Tellius, currently working on Kaiya — An AI-powered analytics assistant focused on conversational data exploration.
         <br />
         <br />`,
       dur: "June 2025 – Present",
