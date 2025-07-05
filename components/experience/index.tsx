@@ -1,6 +1,6 @@
 import { useTheme } from "@emotion/react";
 import { useIsMobile } from "../../hooks";
-import React from "react";
+import React, { useState } from "react";
 
 const Experience = () => {
   const items = [
@@ -76,6 +76,8 @@ const Experience = () => {
     },
   ];
   const isPhone = useIsMobile();
+  const [showTooltip, setShowTooltip] = useState(false);
+
   if (isPhone === null) return null;
   return (
     <div>
@@ -96,27 +98,72 @@ const Experience = () => {
         >
           Experience
         </h1>
-        <a
-          href="https://drive.google.com/file/d/1JSWByscgLOdYe607glYzRAMSgtlNZ1Mf/view?usp=sharing"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            padding: isPhone ? "0.5rem 1rem" : "0.7rem 1.5rem",
-            background: "#0078d4",
-            color: "#fff",
-            borderRadius: "8px",
-            fontWeight: 600,
-            textDecoration: "none",
-            fontSize: isPhone ? "1rem" : "1.1rem",
-            boxShadow: "0 2px 8px rgba(0,0,0,0.07)",
-            transition: "background 0.2s",
-            display: "inline-block",
-          }}
-          onMouseOver={(e) => (e.currentTarget.style.background = "#005fa3")}
-          onMouseOut={(e) => (e.currentTarget.style.background = "#0078d4")}
-        >
-          Resume
-        </a>
+        <div style={{ position: "relative", display: "inline-block" }}>
+          <a
+            href="https://drive.google.com/file/d/1JSWByscgLOdYe607glYzRAMSgtlNZ1Mf/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              padding: isPhone ? "0.5rem 1rem" : "0.7rem 1.5rem",
+              background: "#0078d4",
+              color: "#fff",
+              borderRadius: "8px",
+              fontWeight: 600,
+              textDecoration: "none",
+              fontSize: isPhone ? "1rem" : "1.1rem",
+              boxShadow: "0 2px 8px rgba(0,0,0,0.07)",
+              transition: "background 0.2s",
+              display: "inline-block",
+            }}
+            onMouseOver={e => {
+              e.currentTarget.style.background = "#005fa3";
+              setShowTooltip(true);
+            }}
+            onFocus={() => setShowTooltip(true)}
+            onMouseOut={e => {
+              e.currentTarget.style.background = "#0078d4";
+              setShowTooltip(false);
+            }}
+            onBlur={() => setShowTooltip(false)}
+          >
+            Resume
+          </a>
+          {showTooltip && (
+            <div
+              style={{
+                position: "absolute",
+                left: "50%",
+                transform: "translateX(-50%)",
+                bottom: "120%",
+                background: "#222",
+                color: "#fff",
+                padding: "6px 14px",
+                borderRadius: "6px",
+                fontSize: "0.95rem",
+                whiteSpace: "nowrap",
+                zIndex: 10,
+                boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+                pointerEvents: "none",
+              }}
+            >
+              Last Updated : 1st June 2025
+              <span
+                style={{
+                  position: "absolute",
+                  left: "50%",
+                  top: "100%",
+                  transform: "translateX(-50%)",
+                  width: 0,
+                  height: 0,
+                  borderLeft: "7px solid transparent",
+                  borderRight: "7px solid transparent",
+                  borderTop: "7px solid #222",
+                  content: '""',
+                }}
+              />
+            </div>
+          )}
+        </div>
       </div>
       {items.map((exp) => (
         <ExpComp key={`heading-${exp.header}`} exp={exp} />

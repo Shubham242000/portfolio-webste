@@ -12,11 +12,11 @@ const Footer = () => {
   if (isPhone === null) return null;
   const lightMode = theme.background === "#fff";
 
-  const iconSize = 48;
-  const githubSize = 64;
-  const xSize = 50;
-  const mediumSize = 64;
-  const leetCodeSize = 56;
+  const iconSize = isPhone ? 48 * 0.9 : 48;
+  const githubSize = isPhone ? 64 * 0.9 : 64;
+  const xSize = isPhone ? 50 * 0.9 : 50;
+  const mediumSize = isPhone ? 64 * 0.9 : 64;
+  const leetCodeSize = isPhone ? 56 * 0.9 : 56;
 
   return (
     <div

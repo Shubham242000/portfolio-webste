@@ -28,11 +28,12 @@ const Skills = () => {
           "Material UI",
           "Bootstrap",
           "EmotionJS",
+          "Virtualization"
         ],
       },
       {
         header: "Dev Tools",
-        items: ["NGINX", "CMS", "Git", "Azure", "REST APIs"],
+        items: ["NGINX", "CMS", "Git", "Azure", "REST APIs", "Sockets"],
       },
       {
         header: "Performance & SEO",

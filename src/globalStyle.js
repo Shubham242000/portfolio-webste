@@ -17,4 +17,9 @@ export const globalStyles = (theme) => css`
     background: ${theme.background};
     color: ${theme.color};
   }
+  @media (max-width: 600px) {
+    html {
+      font-size: 90%;
+    }
+  }
 `;
