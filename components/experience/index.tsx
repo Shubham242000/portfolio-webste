@@ -1,8 +1,16 @@
 import { useTheme } from "@emotion/react";
 import { useIsMobile } from "../../hooks";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Experience = () => {
+  const theme = useTheme() as {
+    background: string;
+    color: string;
+    dur: string;
+  };
+  const isDark = theme.background !== "#fff";
+  const [animateItems, setAnimateItems] = useState(false);
+  
   const items = [
     {
       header: "Software Development Engineer - 2 - Tellius",
@@ -11,11 +19,13 @@ const Experience = () => {
         <br />`,
       dur: "June 2025 – Present",
       imgSrc: "https://cdn.prod.website-files.com/67fcfe6c0c7705918e4d7984/67ffc75fd418f7da8a28f65b_fav.svg",
-      imgAlt: "Tellius"
+      imgAlt: "Tellius",
+      companyUrl: "https://tellius.com",
+      location: "Bengalore, India | Hybrid"
     },
     {
       header: "Sofware Development Engineer - Bajaj Finserv Health Limited",
-      desc: `Over the last 2+ years, I’ve built fast and scalable web applications focused on performance, SEO, and user experience. 
+      desc: `Over the last 2+ years, I've built fast and scalable web applications focused on performance, SEO, and user experience. 
             I implemented Incremental Static Regeneration using Next.js, improving load times by 70%,
             <br />
             <br />
@@ -29,9 +39,11 @@ const Experience = () => {
             <br />
             I also independently built a complex healthcare workflow module and helped migrate a monolithic app into a 
             Microfrontend architecture to improve scalability and team autonomy.`,
-      dur: "August 2023 - Present",
+      dur: "August 2023 - June 2025",
       imgSrc: "https://www.bajajfinservhealth.in/favicon.ico",
-      imgAlt: "Bajaj Finserv Health"
+      imgAlt: "Bajaj Finserv Health",
+      companyUrl: "https://bajajfinservhealth.in",
+      location: "Pune, India"
     },
     {
       header: "Sofware Development Intern - Bajaj Finserv Health Limited",
@@ -44,7 +56,9 @@ const Experience = () => {
               <br />
               Using tools like React Profiler and custom hooks, I reduced unnecessary re-renders and improved overall responsiveness. To ensure long-term maintainability, I standardized the codebase with reusable context providers, consistent error handling, and server API wrappers to simplify data fetching across the app.`,
       imgSrc: "https://www.bajajfinservhealth.in/favicon.ico",
-      imgAlt: "Bajaj Finserv Health"
+      imgAlt: "Bajaj Finserv Health",
+      companyUrl: "https://bajajfinservhealth.in",
+      location: "Pune, India"
     },
     {
       header: "Web Development Intern - Robofied",
@@ -56,10 +70,12 @@ const Experience = () => {
             I handled complex data flows using Redux, Redux-Saga, and Context API, making state management predictable and scalable.
             <br />
             <br />
-           For the company’s internal dashboards, I developed and maintained a library of reusable React components, improving UI consistency and performance. 
+           For the company's internal dashboards, I developed and maintained a library of reusable React components, improving UI consistency and performance. 
            Through memoization and render optimizations, I reduced re-renders and enhanced responsiveness in key workflows.`,
       imgSrc: "https://avatars.githubusercontent.com/u/46285577?s=200&v=4",
-      imgAlt: "Robofied"
+      imgAlt: "Robofied",
+      companyUrl: "https://robofied.com",
+      location: "Remote"
     },
     {
       header: "Web Development Intern - Nirvann Applications Private Limited",
@@ -72,7 +88,9 @@ const Experience = () => {
              <br /> 
             By leveraging memoization and dynamic imports, I reduced initial load times by 30%, resulting in smoother performance on low-bandwidth networks. Post-internship, I continued as a core contributor, mentoring new interns and driving UI performance improvements across key modules.`,
       imgSrc: "https://utsavapp.in/favicon.ico",
-      imgAlt: "Utsav App"
+      imgAlt: "Utsav App",
+      companyUrl: "https://utsavapp.in",
+      location: "Remote"
     },
   ];
   const isPhone = useIsMobile();
@@ -86,7 +104,7 @@ const Experience = () => {
           display: isPhone ? "block" : "flex",
           justifyContent: "space-between",
           alignItems: isPhone ? "stretch" : "center",
-          marginBottom: "1rem",
+          marginBottom: "2rem",
         }}
       >
         <h1
@@ -165,87 +183,261 @@ const Experience = () => {
           )}
         </div>
       </div>
-      {items.map((exp) => (
-        <ExpComp key={`heading-${exp.header}`} exp={exp} />
-      ))}
+      
+      {/* Stepper Container */}
+      <div style={{ position: "relative" }}>
+        {/* Timeline Connector Line */}
+        <div
+          style={{
+            position: "absolute",
+            left: "12px",
+            top: "40px",
+            bottom: "40px",
+            width: "2px",
+            background: isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)",
+            zIndex: 0,
+          }}
+        />
+        
+        {items.map((exp, index) => (
+          <StepperItem 
+            key={`stepper-${index}`} 
+            exp={exp} 
+            index={index} 
+            isLast={index === items.length - 1}
+            isPhone={isPhone}
+            animate={animateItems}
+            animationDelay={index * 150}
+          />
+        ))}
+      </div>
     </div>
   );
 };
 
 export default React.memo(Experience);
 
-const ExpComp = ({
+const StepperItem = ({
   exp,
+  index,
+  isLast,
+  isPhone,
+  animate,
+  animationDelay,
 }: {
   exp: {
-    header: string; desc: string; dur: string, imgSrc: string;
+    header: string; 
+    desc: string; 
+    dur: string; 
+    imgSrc: string;
     imgAlt: string;
+    companyUrl: string;
+    location: string;
   };
+  index: number;
+  isLast: boolean;
+  isPhone: boolean;
+  animate: boolean;
+  animationDelay: number;
 }) => {
-  const isPhone = useIsMobile();
   const theme = useTheme() as {
     background: string;
     color: string;
     dur: string;
   };
   const bg = theme.background === "#fff" ? "#f5f7fa" : "#2d3440";
+  const isDark = theme.background !== "#fff";
 
   return (
-    <div style={{ margin: "2rem 0" }}>
+    <div style={{ 
+      position: "relative", 
+      marginBottom: isLast ? "0" : "3rem",
+      opacity: 1,
+      transform: animate ? "translateY(0)" : "translateY(20px)",
+      transition: `opacity 0.6s ease-out ${animationDelay}ms, transform 0.6s ease-out ${animationDelay}ms`,
+    }}>
+      {/* Timeline Dot */}
       <div
         style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
+          position: "absolute",
+          left: "6px",
+          top: "1.5rem",
+          width: "12px",
+          height: "12px",
+          borderRadius: "50%",
+          background: index === 0 ? "#0078d4" : "#6c757d",
+          border: "3px solid",
+          borderColor: isDark ? "#2d3440" : "#f5f7fa",
+          zIndex: 1,
+          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
         }}
-      >
-        <h3
-          style={{
-            fontWeight: 500,
-            margin: "0.5rem 0",
-            fontSize: isPhone ? "1.1rem" : "1.35rem",
-          }}
-        >
-          {exp.header}
-          <img
-            src={exp.imgSrc ?? ""}
-            alt={exp.imgAlt ?? ""}
-            style={{
-              width: 24,
-              height: 24,
-              padding: "0 5px",
-              marginRight: 6,
-              verticalAlign: "middle",
-            }}
-          />
-        </h3>
-        {!isPhone && (
-          <span
-            style={{
-              color:
-                theme.background === "#fff"
-                  ? "rgba(60,60,60,0.5)"
-                  : "rgba(200,200,200,0.4)",
-              fontSize: "1rem",
-              fontWeight: 400,
-            }}
-          >
-            {exp.dur}
-          </span>
-        )}
-      </div>
+      />
 
-      <p
+      {/* Content Card */}
+      <div
         style={{
           background: bg,
-          padding: "2rem",
-          borderRadius: "12px",
-          margin: 0,
-          color: theme.color,
-          fontSize: isPhone ? "0.95rem" : "1.1rem",
+          borderRadius: "16px",
+          padding: "1.5rem",
+          marginLeft: "2rem",
+          boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+          border: isDark ? "1px solid rgba(255,255,255,0.1)" : "1px solid rgba(0,0,0,0.05)",
+          transition: "transform 0.2s, box-shadow 0.2s",
+          cursor: "pointer",
         }}
-        dangerouslySetInnerHTML={{ __html: exp.desc }}
-      />
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = "translateY(-2px)";
+          e.currentTarget.style.boxShadow = "0 8px 30px rgba(0,0,0,0.12)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = "translateY(0)";
+          e.currentTarget.style.boxShadow = "0 4px 20px rgba(0,0,0,0.08)";
+        }}
+      >
+        {/* Header Section */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+            marginBottom: "1rem",
+            flexWrap: isPhone ? "wrap" : "nowrap",
+            gap: "0.5rem",
+          }}
+        >
+          <div style={{ flex: 1 }}>
+            <h3
+              style={{
+                fontWeight: 600,
+                margin: "0 0 0.5rem 0",
+                fontSize: isPhone ? "1.1rem" : "1.35rem",
+                color: theme.color,
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                flexWrap: "wrap",
+              }}
+            >
+              <a
+                href={exp.companyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.opacity = "0.8";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.opacity = "1";
+                }}
+              >
+                <img
+                  src={exp.imgSrc ?? ""}
+                  alt={exp.imgAlt ?? ""}
+                  style={{
+                    width: 24,
+                    height: 24,
+                    borderRadius: "4px",
+                    objectFit: "cover",
+                    transition: "transform 0.2s, filter 0.2s",
+                    cursor: "pointer",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "scale(1.1)";
+                    e.currentTarget.style.filter = "brightness(1.1)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "scale(1)";
+                    e.currentTarget.style.filter = "brightness(1)";
+                  }}
+                />
+                {exp.header}
+              </a>
+            </h3>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                color: isDark ? "rgba(200,200,200,0.7)" : "rgba(60,60,60,0.7)",
+                fontSize: "0.9rem",
+                fontWeight: 500,
+                flexWrap: "wrap",
+              }}
+            >
+              <span style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                {exp.location}
+              </span>
+              <span>•</span>
+              {exp.dur}
+              {index === 0 && (
+                <span
+                  style={{
+                    background: "#0078d4",
+                    color: "#fff",
+                    padding: "2px 8px",
+                    borderRadius: "12px",
+                    fontSize: "0.75rem",
+                    fontWeight: 600,
+                    marginLeft: "0.5rem",
+                  }}
+                >
+                  Current
+                </span>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Description */}
+        <div
+          style={{
+            color: theme.color,
+            fontSize: isPhone ? "0.95rem" : "1rem",
+            lineHeight: "1.6",
+            opacity: 0.9,
+          }}
+          dangerouslySetInnerHTML={{ __html: exp.desc }}
+        />
+
+        {/* Company Website Link */}
+        <div style={{ marginTop: "1rem", paddingTop: "1rem", borderTop: `1px solid ${isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)"}` }}>
+          <a
+            href={exp.companyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              color: "#0078d4",
+              textDecoration: "none",
+              fontSize: "0.9rem",
+              fontWeight: 500,
+              transition: "color 0.2s",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = "#005fa3";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = "#0078d4";
+            }}
+          >
+            Visit Company Website
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
     </div>
   );
 };
