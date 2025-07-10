@@ -93,7 +93,8 @@ const Home = () => {
             frontend engineer
           </span>{" "}
           passionate about building performant, user-centric web applications.
-          With 2+ years of experience, I specialize in{" "}
+          <br />
+          With 3+ years of experience, I specialize in{" "}
           <span
             style={{
               textDecoration: "underline",
