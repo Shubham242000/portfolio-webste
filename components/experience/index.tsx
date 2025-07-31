@@ -14,8 +14,7 @@ const Experience = () => {
   const items = [
     {
       header: "Software Development Engineer - 2 - Tellius",
-      desc: `Recently joined the team at Tellius, currently working on Kaiya — An AI-powered analytics assistant focused on conversational data exploration.
-        <br />
+      desc: `Recently joined Tellius, working on Kaiya (an AI-driven analytics assistant) as well as core platform features like dashboards, vizpads, authentication, and custom views.
         <br />`,
       dur: "June 2025 – Present",
       imgSrc: "https://cdn.prod.website-files.com/67fcfe6c0c7705918e4d7984/67ffc75fd418f7da8a28f65b_fav.svg",

@@ -17,6 +17,8 @@ const Skills = () => {
           "HTML",
           "CSS",
           "C / C++",
+          "Node.js",  
+          "Express.js"
         ],
       },
       {
@@ -33,7 +35,14 @@ const Skills = () => {
       },
       {
         header: "Dev Tools",
-        items: ["NGINX", "CMS", "Git", "Azure", "REST APIs", "Sockets"],
+        items: [
+          "NGINX",
+          "CMS",
+          "Git",
+          "Azure",
+          "REST APIs",
+          "Sockets"
+        ],
       },
       {
         header: "Performance & SEO",
@@ -105,6 +114,7 @@ const Skills = () => {
               { src: "/git.png", alt: "Git" },
               { src: "/azure.png", alt: "Azure" },
               { src: "/docker.png", alt: "Docker" },
+              { src: "/nodejs.png", alt: "node.js" },
             ].map((image, index) => (
               <div key={index} className="tooltip-container">
                 <img
