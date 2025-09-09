@@ -1,6 +1,7 @@
 import React from "react";
 import { useIsMobile } from "../../hooks";
 import { useTheme } from "@emotion/react";
+import {Highlighter} from "../../common";
 
 const Home = () => {
   const theme = useTheme() as { background: string; color: string };
@@ -30,7 +31,6 @@ const Home = () => {
         <h2 style={{ 
           fontSize: isPhone ? "1.2rem" : "1.5rem",
           marginBottom: "1.5rem",
-          color: theme.color,
           opacity: 0.9,
         }}>
           Software Development Engineer - 2,{" "}
@@ -52,16 +52,9 @@ const Home = () => {
                 "noopener,noreferrer"
               )
             }
-            onMouseOver={(e) => {
-              e.currentTarget.style.color = "#005fa3";
-              e.currentTarget.style.textDecorationColor = "#005fa3";
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.color = "#0078d4";
-              e.currentTarget.style.textDecorationColor = "#0078d4";
-            }}
+           
           >
-            Tellius Private Ltd
+            <Highlighter action="underline" color="#FF9800">  Tellius Private Ltd</Highlighter>
             <img
               src="https://cdn.prod.website-files.com/67fcfe6c0c7705918e4d7984/67ffc75fd418f7da8a28f65b_fav.svg"
               alt="Tellius logo"
@@ -81,34 +74,21 @@ const Home = () => {
           opacity: 0.9,
         }}>
           I'm a{" "}
-          <span
-            style={{
-              textDecoration: "underline",
-              textDecorationColor: "#0078d4",
-              textUnderlineOffset: "4px",
-              textDecorationThickness: "3px",
-              fontWeight: "600",
-            }}
-          >
+          <Highlighter action="underline" color="#FF9800">
             frontend engineer
-          </span>{" "}
+          </Highlighter>{" "}
           passionate about building performant, user-centric web applications.
           <br />
           With 3+ years of experience, I specialize in{" "}
-          <span
-            style={{
-              textDecoration: "underline",
-              textDecorationColor: "#0078d4",
-              textUnderlineOffset: "4px",
-              textDecorationThickness: "3px",
-              fontWeight: "600",
-            }}
-          >
+          <Highlighter action="highlight" color="#87CEFA" >
             ReactJS, NextJS, TypeScript, JavaScript
-          </span>{" "}
+          </Highlighter>{" "}
           and scalable architecture. I enjoy solving real-world problems,
           contributing to design systems, and optimizing performance across Core
-          Web Vitals. As a curious technologist, I'm always exploring innovative
+          Web Vitals. As a curious technologist, 
+           
+            I'm always exploring innovative
+          
           ways to create meaningful impact through code.
         </p>
       </div>
