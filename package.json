@@ -13,10 +13,12 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@lottiefiles/dotlottie-react": "^0.14.1",
+    "framer-motion": "^12.23.12",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.2",
-    "react-toggle-dark-mode": "^1.1.1"
+    "react-toggle-dark-mode": "^1.1.1",
+    "rough-notation": "^0.5.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
