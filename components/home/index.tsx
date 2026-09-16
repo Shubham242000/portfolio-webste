@@ -47,20 +47,21 @@ const Home = () => {
             }}
             onClick={() =>
               window.open(
-                "https://www.tellius.com/",
+                "https://paypay.co.in/",
                 "_blank",
                 "noopener,noreferrer"
               )
             }
            
           >
-            <Highlighter action="underline" color="#FF9800">  Tellius Private Ltd</Highlighter>
+            <Highlighter action="underline" color="#FF9800">  PayPay India</Highlighter>
             <img
-              src="https://cdn.prod.website-files.com/67fcfe6c0c7705918e4d7984/67ffc75fd418f7da8a28f65b_fav.svg"
-              alt="Tellius logo"
+              src="/paypay.png"
+              alt="PayPay logo"
               style={{
                 width: 20,
                 height: 20,
+                borderRadius: "4px",
                 verticalAlign: "middle",
               }}
             />
@@ -79,7 +80,7 @@ const Home = () => {
           </Highlighter>{" "}
           passionate about building performant, user-centric web applications.
           <br />
-          With 3+ years of experience, I specialize in{" "}
+          With 4+ years of experience, I specialize in{" "}
           <Highlighter action="highlight" color="#87CEFA" >
             ReactJS, NextJS, TypeScript, JavaScript
           </Highlighter>{" "}

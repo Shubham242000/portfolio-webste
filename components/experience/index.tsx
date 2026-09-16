@@ -13,10 +13,31 @@ const Experience = () => {
   
   const items = [
     {
-      header: "Software Development Engineer - 2 - Tellius",
-      desc: `Recently joined Tellius, working on Kaiya (an AI-driven analytics assistant) as well as core platform features like dashboards, vizpads, authentication, and custom views.
+      header: "Software Development Engineer - 2 - PayPay India",
+      desc: `Recently joined PayPay India, working on the consumer gift vouchers platform, building scalable and performant frontend architecture for fintech products.
         <br />`,
-      dur: "June 2025 – Present",
+      dur: "July 2026 – Present",
+      imgSrc: "/paypay.png",
+      imgAlt: "PayPay India",
+      companyUrl: "https://paypay.co.in",
+      location: "Gurugram, India"
+    },
+    {
+      header: "Software Development Engineer - 2 - Tellius",
+      desc: `I engineered a multi-step Agentic workflow UI for an AI data modeling platform, enabling users to orchestrate autonomous analysis pipelines from natural language input to governed semantic layer deployment through a conversational React interface.
+            <br />
+            <br />
+            I built a client-side SSE streaming layer handling 5+ concurrent AI message types (incremental text, structured chart configs, tool-use events, errors, and status signals), enabling sub-200ms perceived latency for agentic responses.
+            <br />
+            <br />
+            I redesigned the Visualization architecture to eliminate an intermediate proprietary format—enabling LLMs to generate React-renderable chart configs directly, removing an entire translation layer and streamlining the AI-to-UI pipeline end to end. I also integrated real-time speech-to-text capabilities for voice-driven product interactions.
+            <br />
+            <br />
+            I built real-time analytics dashboards handling high-frequency updates via WebSocket connections, implementing Virtualization and incremental rendering to maintain 60fps UI performance across enterprise-scale datasets.
+            <br />
+            <br />
+            Additionally, I architected an enterprise-grade SAML 2.0 SSO system with multi-provider support, implementing token refresh logic and session persistence, which reduced auth-related support tickets by 30%.`,
+      dur: "June 2025 – July 2026",
       imgSrc: "https://cdn.prod.website-files.com/67fcfe6c0c7705918e4d7984/67ffc75fd418f7da8a28f65b_fav.svg",
       imgAlt: "Tellius",
       companyUrl: "https://tellius.com",
@@ -117,8 +138,8 @@ const Experience = () => {
         </h1>
         <div style={{ position: "relative", display: "inline-block" }}>
           <a 
-            // older:  href="https://drive.google.com/file/d/1JSWByscgLOdYe607glYzRAMSgtlNZ1Mf/view?usp=sharing"
-            href="https://drive.google.com/file/d/1t5EcYKCG5aaFAVoEAx9GEc4sfl_U_5MG/view?usp=sharing"
+            // older:  href="https://drive.google.com/file/d/1t5EcYKCG5aaFAVoEAx9GEc4sfl_U_5MG/view?usp=sharing"
+            href="https://drive.google.com/file/d/1secfLjG2jAxmV4wsVbBCw9oLqwsDtO97/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -164,7 +185,7 @@ const Experience = () => {
                 pointerEvents: "none",
               }}
             >
-              Last Updated : 29 November 2025
+              Last Updated : July 2026
               <span
                 style={{
                   position: "absolute",
