@@ -15,7 +15,7 @@ const ExperienceSection = () => (
         </div>
       </article>)}
     </div>
-    <a className="button-link" href="https://drive.google.com/file/d/1secfLjG2jAxmV4wsVbBCw9oLqwsDtO97/view?usp=sharing" target="_blank" rel="noreferrer">View résumé <span>↗</span></a>
+    <a className="button-link" href="https://drive.google.com/file/d/19xbwFaEGkat9er221LcJ3fxIsKhmDWld/view?usp=sharing" target="_blank" rel="noreferrer">View résumé <span>↗</span></a>
   </section>
 );
 
