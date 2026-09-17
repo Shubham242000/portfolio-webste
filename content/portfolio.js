@@ -1,0 +1,17 @@
+export const experience = [
+  { company: "PayPay India", role: "Software Development Engineer II", period: "Jul 2026 — Present", place: "Gurugram, India", href: "https://paypay.co.in/", summary: "Building scalable, high-performance frontend architecture for consumer fintech products." },
+  { company: "Tellius", role: "Software Development Engineer II", period: "Jun 2025 — Jul 2026", place: "Bengaluru, India · Hybrid", href: "https://tellius.com/", summary: "Built agentic workflow interfaces, real-time analytics, and a streaming UI layer for AI-powered data modelling.", outcomes: ["Handled five concurrent AI stream types with sub-200ms perceived response latency.", "Removed an intermediate chart format so LLM output could render directly in React.", "Kept enterprise dashboards responsive at 60fps with virtualization and incremental rendering.", "Architected multi-provider SAML 2.0 SSO, reducing authentication support tickets by 30%."] },
+  { company: "Bajaj Finserv Health", role: "Software Development Engineer", period: "Aug 2023 — Jun 2025", place: "Pune, India", href: "https://www.bajajfinservhealth.in/", summary: "Worked across patient journeys, platform performance, SEO, and a shared design language system.", outcomes: ["Improved load times by 70% through Next.js ISR and a more thoughtful delivery strategy.", "Increased appointments by 40% by leading the end-to-end OPD booking experience.", "Scaled organic traffic beyond 100K users/month with Core Web Vitals and structured-data improvements.", "Helped evolve a monolith into a microfrontend architecture for greater team autonomy."] },
+  { company: "Bajaj Finserv Health", role: "Software Development Intern", period: "Aug 2022 — Aug 2023", place: "Pune, India", href: "https://www.bajajfinservhealth.in/", summary: "Built customer-facing healthcare flows and strengthened the frontend foundations behind them.", outcomes: ["Led the Medicard flow from API integration to complex client-side state management.", "Reduced unnecessary renders with React Profiler, custom hooks, and reusable providers.", "Improved error visibility with custom API tracking headers and ELK dashboards."] },
+  { company: "Robofied", role: "Web Development Intern", period: "Oct 2021 — Dec 2021", place: "Remote", href: "https://robofied.com/", summary: "Developed responsive React interfaces and reusable dashboard components for internal products.", outcomes: ["Made complex data flows predictable with Redux, Redux-Saga, and Context API.", "Improved responsiveness through memoization and render optimisations."] },
+  { company: "Nirvann Applications", role: "Web Development Intern", period: "Feb 2021 — Apr 2021", place: "Remote", href: "https://utsavapp.in/", summary: "Worked with startup teams to establish responsive digital experiences across three brands.", outcomes: ["Delivered accessible interfaces with React, Bootstrap, and vanilla JavaScript.", "Reduced initial load time by 30% using dynamic imports and memoization."] },
+];
+
+export const capabilities = [
+  ["Frontend systems", "React, Next.js, Vue.js, TypeScript, JavaScript"],
+  ["Backend integration", "Node.js, NestJS, REST APIs, SSE, WebSockets"],
+  ["State & architecture", "Redux, Redux-Saga, Context API, microfrontends"],
+  ["Product performance", "Core Web Vitals, ISR, Lighthouse, rendering strategy"],
+  ["UI engineering", "Design systems, accessibility, Material UI, Emotion"],
+  ["Delivery & tooling", "Git, Azure, NGINX, Docker, CI/CD"],
+];

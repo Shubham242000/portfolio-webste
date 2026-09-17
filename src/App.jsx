@@ -1,80 +1,48 @@
-import React, { useState, useEffect } from "react";
-import { ThemeProvider, Global } from "@emotion/react";
-import { Routes, Route } from "react-router-dom";
-import Navbar from "../components/navbar";
-import { DarkModeSwitch } from "react-toggle-dark-mode";
-import { globalStyles } from "./globalStyle";
-import Home from "../components/home";
-import Footer from "../components/footer";
-import Skills from "../components/skills";
+import { lazy, useEffect, useState } from "react";
+import DeferredSection from "../components/DeferredSection";
+import "./App.css";
 
-const Experience = React.lazy(() => import("../components/experience"));
-
-const lightTheme = {
-  background: "#fff",
-  color: "#222",
-};
-
-const darkTheme = {
-  background: "#222",
-  color: "#fff",
-};
+const ExperienceSection = lazy(() => import("../components/ExperienceSection"));
+const CapabilitiesSection = lazy(() => import("../components/CapabilitiesSection"));
+const ContactSection = lazy(() => import("../components/ContactSection"));
 
 function App() {
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
-    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
-    setDark(systemTheme.matches); // Set theme based on system preference
-
-    const handleThemeChange = (e) => {
-      setDark(e.matches);
-    };
-    systemTheme.addEventListener("change", handleThemeChange);
-
-   
-    return () => {
-      systemTheme.removeEventListener("change", handleThemeChange);
-    };
+    const preference = window.matchMedia("(prefers-color-scheme: dark)");
+    setDark(preference.matches);
+    const handleChange = (event) => setDark(event.matches);
+    preference.addEventListener("change", handleChange);
+    return () => preference.removeEventListener("change", handleChange);
   }, []);
 
-  const theme = dark ? darkTheme : lightTheme;
-  const items = ["", "SKILLS", "EXPERIENCE"];
-  return (
-    <ThemeProvider theme={theme}>
-      <Global styles={globalStyles(theme)} />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          maxWidth: "900px",
-          margin: "15px auto",
-        }}
-      >
-        <Navbar items={items} />
-        <DarkModeSwitch
-          style={{ marginBottom: "2rem", cursor : "pointer" }}
-          checked={dark}
-          onChange={() => setDark(!dark)}
-          size={40}
-        />
+  return <main className={dark ? "site site--dark" : "site"}>
+    <header className="topbar">
+      <a className="wordmark" href="#top" aria-label="Shubham Shrivastava, home">SS<span>·</span></a>
+      <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#about">Capabilities</a><a href="#contact">Contact</a></nav>
+      <button className="theme-toggle" onClick={() => setDark((value) => !value)} aria-label="Toggle colour theme">{dark ? "Light" : "Dark"}</button>
+    </header>
+
+    <section className="hero" id="top">
+      <div className="eyebrow">Frontend engineer · India</div>
+      <div className="hero-grid">
+        <h1>I build calm,<br />capable interfaces<br />for complex products.</h1>
+        <div className="hero-aside">
+          <img src="/my-image.jpeg" alt="Shubham Shrivastava" />
+          <p>Currently building consumer fintech experiences at <a href="https://paypay.co.in/" target="_blank" rel="noreferrer">PayPay India ↗</a>.</p>
+        </div>
       </div>
-      <div
-        style={{
-          maxWidth: "900px",
-          margin: "0 auto",
-        }}
-      >
-        <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/experience" element={<Experience />} />
-          <Route path="*" element={<Home />} />
-        </Routes>
-        <Footer />
+      <div className="hero-intro">
+        <p>I’m Shubham, a frontend engineer with 4+ years of experience shaping fast, thoughtful web products. I care about the details that make software feel clear: performance, interaction, and a solid system underneath.</p>
+        <a className="text-link" href="#work">Explore my experience <span>↓</span></a>
       </div>
-    </ThemeProvider>
-  );
+    </section>
+
+    <DeferredSection id="work"><ExperienceSection /></DeferredSection>
+    <DeferredSection id="about"><CapabilitiesSection /></DeferredSection>
+    <DeferredSection id="contact"><ContactSection /></DeferredSection>
+  </main>;
 }
 
 export default App;
