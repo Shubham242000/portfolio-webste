@@ -10,7 +10,7 @@ const Experience = () => {
   };
   const isDark = theme.background !== "#fff";
   const [animateItems, setAnimateItems] = useState(false);
-  
+
   const items = [
     {
       header: "Software Development Engineer - 2 - PayPay India",
@@ -137,7 +137,7 @@ const Experience = () => {
           Experience
         </h1>
         <div style={{ position: "relative", display: "inline-block" }}>
-          <a 
+          <a
             // older:  href="https://drive.google.com/file/d/1t5EcYKCG5aaFAVoEAx9GEc4sfl_U_5MG/view?usp=sharing"
             href="https://drive.google.com/file/d/1secfLjG2jAxmV4wsVbBCw9oLqwsDtO97/view?usp=sharing"
             target="_blank"
@@ -204,7 +204,7 @@ const Experience = () => {
           )}
         </div>
       </div>
-      
+
       {/* Stepper Container */}
       <div style={{ position: "relative" }}>
         {/* Timeline Connector Line */}
@@ -219,12 +219,12 @@ const Experience = () => {
             zIndex: 0,
           }}
         />
-        
+
         {items.map((exp, index) => (
-          <StepperItem 
-            key={`stepper-${index}`} 
-            exp={exp} 
-            index={index} 
+          <StepperItem
+            key={`stepper-${index}`}
+            exp={exp}
+            index={index}
             isLast={index === items.length - 1}
             isPhone={isPhone}
             animate={animateItems}
@@ -247,9 +247,9 @@ const StepperItem = ({
   animationDelay,
 }: {
   exp: {
-    header: string; 
-    desc: string; 
-    dur: string; 
+    header: string;
+    desc: string;
+    dur: string;
     imgSrc: string;
     imgAlt: string;
     companyUrl: string;
@@ -270,8 +270,8 @@ const StepperItem = ({
   const isDark = theme.background !== "#fff";
 
   return (
-    <div style={{ 
-      position: "relative", 
+    <div style={{
+      position: "relative",
       marginBottom: isLast ? "0" : "3rem",
       opacity: 1,
       transform: animate ? "translateY(0)" : "translateY(20px)",
@@ -393,7 +393,7 @@ const StepperItem = ({
             >
               <span style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                 </svg>
                 {exp.location}
               </span>
@@ -454,7 +454,7 @@ const StepperItem = ({
           >
             Visit Company Website
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+              <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z" />
             </svg>
           </a>
         </div>
