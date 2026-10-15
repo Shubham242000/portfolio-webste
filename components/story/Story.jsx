@@ -1,54 +1,34 @@
-import { useState } from "react";
 import "./story.css";
 
-// Layout shared by every story: the visual on the left, numbered plain-language steps on the right.
-const Story = ({ story, steps, result, children }) => {
-  const [showTech, setShowTech] = useState(false);
-  const { ref, step, status, play, pause, resume, jump } = story;
-
-  const control = {
-    idle: ["Play ▶", play],
-    playing: ["Pause ❚❚", pause],
-    paused: ["Resume ▶", resume],
-    done: ["Replay ↺", play],
-  }[status];
+// A compact, looping story: story-style progress segments, one caption line, and the visual.
+const Story = ({ story, steps, children }) => {
+  const { ref, step, status, cycle, running, play, pause, resume, jump } = story;
+  const control = status === "playing" ? ["Pause", "❚❚", pause] : status === "done" ? ["Replay", "↺", play] : ["Play", "▶", status === "idle" ? play : resume];
 
   return <div className="story" ref={ref}>
-    <div className="story-stage">
-      {step < 0 ? <button type="button" className="story-start" onClick={play}>Play the story ▶</button> : <>
-        <p className="story-caption" aria-hidden="true"><span>{String(step + 1).padStart(2, "0")}</span>{steps[step].caption}</p>
-        {children}
-      </>}
-    </div>
-
-    <div className="story-side">
-      <div className="story-head">
-        <span>{status === "done" ? "Finished" : step < 0 ? `${steps.length} steps` : `Step ${step + 1} of ${steps.length}`}</span>
-        <button type="button" className="chip" onClick={control[1]}>{control[0]}</button>
-      </div>
-
-      <ol className="story-steps">
+    <div className="story-bar">
+      <div className="story-segments">
         {steps.map((item, index) => {
-          const state = index === step && status !== "done" ? "is-current" : index <= step ? "is-past" : "";
-          return <li key={item.caption} className={state}>
-            <button type="button" onClick={() => jump(index)} aria-current={state === "is-current" ? "step" : undefined}>
-              <span className="story-num">{String(index + 1).padStart(2, "0")}</span>
-              <span>
-                {item.caption}
-                {showTech && <code>{item.tech}</code>}
-              </span>
-            </button>
-          </li>;
+          const current = index === step && status !== "done";
+          const state = current && running ? "is-running" : index < step || index === step || status === "done" ? "is-full" : "";
+          return <button
+            key={item.caption}
+            type="button"
+            className={state}
+            onClick={() => jump(index)}
+            aria-label={`Step ${index + 1}: ${item.caption}`}
+            aria-current={current ? "step" : undefined}
+          >
+            <i key={current ? `${cycle}-${step}` : "static"} style={current ? { animationDuration: `${item.duration}ms` } : undefined} />
+          </button>;
         })}
-      </ol>
-
-      <p className={status === "done" ? "story-result is-visible" : "story-result"} aria-live="polite">{status === "done" ? result : ""}</p>
-
-      <label className="story-tech">
-        <input type="checkbox" checked={showTech} onChange={(event) => setShowTech(event.target.checked)} />
-        Show technical details
-      </label>
+      </div>
+      <button type="button" className="story-control" onClick={control[2]} aria-label={control[0]}>{control[1]}</button>
     </div>
+
+    <p className="story-caption" key={`${cycle}-${step}`}>{steps[step].caption}</p>
+
+    <div className="story-stage">{children}</div>
   </div>;
 };
 

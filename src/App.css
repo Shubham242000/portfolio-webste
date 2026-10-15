@@ -1,4 +1,7 @@
 :root {
+    /* Pixel-art cursors (generated from 1px grids, drawn at 2×) to match the avatar. */
+    --cursor-default: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='34' viewBox='0 0 11 17' shape-rendering='crispEdges'%3E%3Cpath fill='%23fff' d='M0 0h1v1h-1zM0 1h2v1h-2zM0 2h1v1h-1zM2 2h1v1h-1zM0 3h1v1h-1zM3 3h1v1h-1zM0 4h1v1h-1zM4 4h1v1h-1zM0 5h1v1h-1zM5 5h1v1h-1zM0 6h1v1h-1zM6 6h1v1h-1zM0 7h1v1h-1zM7 7h1v1h-1zM0 8h1v1h-1zM8 8h1v1h-1zM0 9h1v1h-1zM9 9h1v1h-1zM0 10h1v1h-1zM6 10h5v1h-5zM0 11h1v1h-1zM3 11h1v1h-1zM6 11h1v1h-1zM0 12h1v1h-1zM2 12h1v1h-1zM4 12h1v1h-1zM7 12h1v1h-1zM0 13h2v1h-2zM4 13h1v1h-1zM7 13h1v1h-1zM0 14h1v1h-1zM5 14h1v1h-1zM8 14h1v1h-1zM5 15h1v1h-1zM8 15h1v1h-1zM6 16h2v1h-2z'/%3E%3Cpath fill='%232f54eb' d='M1 2h1v1h-1zM1 3h2v1h-2zM1 4h3v1h-3zM1 5h4v1h-4zM1 6h5v1h-5zM1 7h6v1h-6zM1 8h7v1h-7zM1 9h8v1h-8zM1 10h5v1h-5zM1 11h2v1h-2zM4 11h2v1h-2zM1 12h1v1h-1zM5 12h2v1h-2zM5 13h2v1h-2zM6 14h2v1h-2zM6 15h2v1h-2z'/%3E%3C/svg%3E") 0 0, auto;
+    --cursor-pointer: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Cpath fill='%23fff' d='M5 0h2v1h-2zM4 1h1v1h-1zM7 1h1v1h-1zM4 2h1v1h-1zM7 2h1v1h-1zM4 3h1v1h-1zM7 3h1v1h-1zM4 4h1v1h-1zM7 4h3v1h-3zM4 5h1v1h-1zM7 5h1v1h-1zM10 5h3v1h-3zM4 6h1v1h-1zM7 6h1v1h-1zM10 6h1v1h-1zM13 6h2v1h-2zM1 7h2v1h-2zM4 7h1v1h-1zM7 7h1v1h-1zM10 7h1v1h-1zM13 7h1v1h-1zM15 7h1v1h-1zM0 8h1v1h-1zM3 8h2v1h-2zM13 8h1v1h-1zM15 8h1v1h-1zM0 9h1v1h-1zM4 9h1v1h-1zM15 9h1v1h-1zM1 10h1v1h-1zM15 10h1v1h-1zM2 11h1v1h-1zM15 11h1v1h-1zM2 12h1v1h-1zM14 12h1v1h-1zM3 13h1v1h-1zM14 13h1v1h-1zM4 14h1v1h-1zM13 14h1v1h-1zM4 15h1v1h-1zM13 15h1v1h-1z'/%3E%3Cpath fill='%232f54eb' d='M5 1h2v1h-2zM5 2h2v1h-2zM5 3h2v1h-2zM5 4h2v1h-2zM5 5h2v1h-2zM8 5h2v1h-2zM5 6h2v1h-2zM8 6h2v1h-2zM11 6h2v1h-2zM5 7h2v1h-2zM8 7h2v1h-2zM11 7h2v1h-2zM14 7h1v1h-1zM1 8h2v1h-2zM5 8h8v1h-8zM14 8h1v1h-1zM1 9h3v1h-3zM5 9h10v1h-10zM2 10h13v1h-13zM3 11h12v1h-12zM3 12h11v1h-11zM4 13h10v1h-10zM5 14h8v1h-8zM5 15h8v1h-8z'/%3E%3C/svg%3E") 11 0, pointer;
     --ink: #0a0a0b;
     --paper: #ffffff;
     --muted: #5c6370;
@@ -20,6 +23,7 @@ html {
 
 body {
     margin: 0;
+    cursor: var(--cursor-default);
     min-width: 320px;
     background: var(--paper);
     color: var(--ink);
@@ -37,6 +41,12 @@ a {
 
 button {
     font: inherit;
+}
+
+a,
+button,
+label {
+    cursor: var(--cursor-pointer);
 }
 
 .site {
@@ -111,7 +121,7 @@ nav a:hover,
     background: none;
     border: 0;
     padding: 0;
-    cursor: pointer;
+    cursor: var(--cursor-pointer);
     font-size: 14px;
 }
 
@@ -172,7 +182,46 @@ h1 {
     line-height: 1.5;
 }
 
-.hero-aside a {
+.hobbies {
+    max-width: 230px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.hobbies-now {
+    border-bottom: 1px solid transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--ink);
+    font: inherit;
+    font-weight: 500;
+    animation: hobby-in .4s ease-out;
+}
+
+.hobbies-now:hover {
+    border-bottom-color: var(--accent);
+}
+
+.hobby-icon {
+    flex: none;
+    width: 13px;
+    height: 13px;
+    fill: var(--accent);
+}
+
+@keyframes hobby-in {
+    from { opacity: 0; transform: translateY(6px); }
+}
+
+
+.hero-aside a,
+.hero-intro p a {
     color: var(--ink);
     border-bottom: 1px solid var(--accent);
 }
@@ -193,8 +242,7 @@ h1 {
     letter-spacing: -.02em;
 }
 
-.text-link,
-.button-link {
+.text-link {
     border-bottom: 1px solid var(--ink);
     display: inline-flex;
     gap: 18px;
@@ -282,7 +330,6 @@ h1 {
 }
 
 .experience-body h3 span,
-.button-link span,
 .email-link span {
     color: var(--accent);
 }
@@ -310,7 +357,7 @@ h1 {
     background: none;
     color: var(--muted);
     font: 12px "Geist Mono", ui-monospace, monospace;
-    cursor: pointer;
+    cursor: var(--cursor-pointer);
 }
 
 .experience-toggle:hover {
@@ -337,76 +384,22 @@ h1 {
     line-height: 1.55;
 }
 
-.tabs {
-    display: flex;
-    border: 1px solid var(--line);
-    border-bottom: 0;
-}
-
-.tab {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: 14px 20px;
-    border: 0;
-    border-right: 1px solid var(--line);
-    border-bottom: 2px solid transparent;
-    background: transparent;
-    color: var(--muted);
-    text-align: left;
-    font-size: 15px;
-    cursor: pointer;
-    transition: color .2s, border-color .2s;
-}
-
-.tab:last-child {
-    border-right: 0;
-}
-
-.tab span {
-    font: 11px "Geist Mono", ui-monospace, monospace;
-}
-
-.tab:hover,
-.tab[aria-selected="true"] {
-    color: var(--ink);
-}
-
-.tab[aria-selected="true"] {
-    border-bottom-color: var(--accent);
-    background: var(--panel);
-}
-
-.showcase-article {
-    display: block;
-    max-width: 640px;
-    margin: 18px 0 0 auto;
-    font-size: 14px;
-    line-height: 1.4;
-    text-align: right;
-}
-
-.showcase-article span {
-    display: block;
-    margin-bottom: 4px;
-    color: var(--muted);
-    font: 11px "Geist Mono", ui-monospace, monospace;
-    text-transform: uppercase;
-}
-
-.showcase-article i {
-    font-style: normal;
-    color: var(--accent);
-}
-
-.showcase-article:hover {
-    color: var(--accent);
-}
 
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
+    }
+
+    .hobbies-now {
+        animation: none;
+    }
+
+    .postcard {
+        transition: none;
+    }
+
+    .player-vinyl {
+        animation: none;
     }
 }
 
@@ -462,6 +455,267 @@ h1 {
     margin-top: 40px;
     font-size: clamp(2.6rem, 5.4vw, 5rem);
     line-height: .94;
+}
+
+.player {
+    flex: none;
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 14px;
+    width: 380px;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--panel);
+    transition: border-color .2s;
+}
+
+.player.is-playing {
+    border-color: var(--accent);
+}
+
+.player-disc {
+    position: relative;
+    width: 72px;
+    height: 72px;
+}
+
+.player-disc svg {
+    position: absolute;
+    inset: 0;
+    transform: rotate(-90deg);
+}
+
+.player-disc circle {
+    fill: none;
+    stroke-width: 2.5;
+}
+
+.player-ring-track {
+    stroke: var(--line);
+}
+
+.player-ring {
+    stroke: var(--accent);
+    stroke-linecap: round;
+    transition: stroke-dashoffset .25s linear;
+}
+
+.player-vinyl {
+    position: absolute;
+    inset: 6px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: repeating-radial-gradient(circle, #1a1a1d 0 2px, #2b2b30 2px 3px);
+    animation: disc-spin 3.2s linear infinite;
+    animation-play-state: paused;
+}
+
+.player.is-playing .player-vinyl {
+    animation-play-state: running;
+}
+
+.player-vinyl img {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.player-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    font-size: 14px;
+    line-height: 1.3;
+}
+
+.player-text > span:nth-child(3) {
+    color: var(--muted);
+}
+
+.player-label {
+    margin-bottom: 3px;
+    color: var(--accent);
+    font: 10px "Geist Mono", ui-monospace, monospace;
+    text-transform: uppercase;
+}
+
+.player-meta {
+    margin-top: 6px;
+    color: var(--muted);
+    font: 11px "Geist Mono", ui-monospace, monospace;
+    white-space: nowrap;
+}
+
+.player-meta a {
+    color: var(--ink);
+}
+
+.player-meta a:hover {
+    color: var(--accent);
+}
+
+.player-eq {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 24px;
+}
+
+.player-eq i {
+    --level: 1;
+    width: 4px;
+    height: calc(var(--level) * 4px);
+    background: repeating-linear-gradient(to top, var(--accent) 0 3px, transparent 3px 4px);
+}
+
+.player-button {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 0 0 0 1px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--paper);
+    font-size: 13px;
+    transition: transform .15s;
+}
+
+.player-button:hover {
+    transform: scale(1.06);
+}
+
+.player-button:disabled {
+    opacity: .4;
+}
+
+@keyframes disc-spin {
+    to { transform: rotate(360deg); }
+}
+
+.postcards {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 12px 0 8px;
+    list-style: none;
+}
+
+.postcards li {
+    --tilt: -3deg;
+    margin-left: -26px;
+}
+
+.postcards li:first-child {
+    margin-left: 0;
+}
+
+.postcards li:nth-child(2) { --tilt: 2.5deg; }
+.postcards li:nth-child(3) { --tilt: -1.5deg; }
+.postcards li:nth-child(4) { --tilt: 3.5deg; }
+.postcards li:nth-child(5) { --tilt: -2.5deg; }
+.postcards li:nth-child(6) { --tilt: 2deg; }
+.postcards li:nth-child(7) { --tilt: -2deg; }
+
+.postcard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 182px;
+    padding: 8px 8px 12px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    background: var(--paper);
+    box-shadow: 0 10px 24px rgba(10, 10, 11, .1);
+    transform: rotate(var(--tilt));
+    transition: transform .3s cubic-bezier(.2, .7, .2, 1), box-shadow .3s;
+}
+
+.postcard:hover,
+.postcard:focus-visible {
+    z-index: 2;
+    transform: rotate(0) translateY(-10px) scale(1.05);
+    box-shadow: 0 18px 36px rgba(10, 10, 11, .18);
+}
+
+.postcard img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+}
+
+.postcard span {
+    color: var(--muted);
+    font: 12px "Geist Mono", ui-monospace, monospace;
+    text-align: left;
+}
+
+.lightbox {
+    max-width: min(92vw, 1100px);
+    max-height: 92vh;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    overflow: visible;
+}
+
+.lightbox::backdrop {
+    background: rgba(5, 5, 6, .86);
+}
+
+.lightbox figure {
+    margin: 0;
+}
+
+.lightbox img {
+    display: block;
+    max-width: 100%;
+    max-height: 80vh;
+    margin: 0 auto;
+    border-radius: 4px;
+}
+
+.lightbox figcaption {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-top: 12px;
+    color: #fff;
+    font: 13px "Geist Mono", ui-monospace, monospace;
+}
+
+.lightbox-controls {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.lightbox-controls button {
+    padding: 4px 8px;
+    border: 1px solid rgba(255, 255, 255, .35);
+    border-radius: 999px;
+    background: none;
+    color: #fff;
+    font: inherit;
+}
+
+.lightbox-controls button:hover {
+    border-color: #fff;
+}
+
+.contact-note {
+    margin: 20px 0 0;
+    color: var(--muted);
+    font-size: 17px;
 }
 
 .email-link {
@@ -530,6 +784,27 @@ h1 {
         margin: 0;
     }
 
+    .postcards {
+        justify-content: flex-start;
+        gap: 12px;
+        margin: 0 -20px;
+        padding: 8px 20px 16px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+    }
+
+    .postcards li,
+    .postcards li:first-child {
+        flex: none;
+        margin: 0;
+        scroll-snap-align: start;
+    }
+
+    .postcard {
+        width: 168px;
+        transform: none;
+    }
+
 
     .hero-aside p {
         max-width: 250px;
@@ -559,14 +834,7 @@ h1 {
 
 
 
-    .tab {
-        padding: 12px 14px;
-        font-size: 14px;
-    }
 
-    .showcase-article {
-        text-align: left;
-    }
 
 
     .section-heading--split {
@@ -574,6 +842,11 @@ h1 {
     }
 
     .section-heading--split .text-link {
+        margin-top: 20px;
+    }
+
+    .section-heading--split .player {
+        width: 100%;
         margin-top: 20px;
     }
 

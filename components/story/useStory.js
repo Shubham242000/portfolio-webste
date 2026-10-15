@@ -2,44 +2,57 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-// Steps through a story on a timer. `durations` must be stable (define it at module level).
-// The story starts by itself once it scrolls into view, unless the visitor prefers reduced motion.
-export function useStory(durations) {
-  const [step, setStep] = useState(-1);
-  const [status, setStatus] = useState("idle");
+// Steps through a story on a timer and loops it while it is on screen. `durations` must be stable
+// (define it at module level). Visitors who prefer reduced motion get the final step, static.
+export function useStory(durations, { hold = 2600 } = {}) {
+  const last = durations.length - 1;
+  const [step, setStep] = useState(() => (prefersReducedMotion() ? last : 0));
+  const [status, setStatus] = useState(() => (prefersReducedMotion() ? "paused" : "idle"));
+  const [visible, setVisible] = useState(false);
+  const [cycle, setCycle] = useState(0);
   const ref = useRef(null);
-
-  useEffect(() => {
-    if (status !== "playing") return undefined;
-    const timer = setTimeout(() => {
-      if (step >= durations.length - 1) setStatus("done");
-      else setStep(step + 1);
-    }, durations[step]);
-    return () => clearTimeout(timer);
-  }, [status, step, durations]);
+  const running = status === "playing" && visible;
 
   const play = useCallback(() => {
     setStep(0);
+    setCycle((value) => value + 1);
     setStatus("playing");
   }, []);
 
   useEffect(() => {
     const element = ref.current;
-    if (!element || prefersReducedMotion()) return undefined;
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        observer.disconnect();
-        play();
-      }
-    }, { threshold: 0.4 });
+    if (!element) return undefined;
+    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), { threshold: 0.35 });
     observer.observe(element);
     return () => observer.disconnect();
-  }, [play]);
+  }, []);
+
+  useEffect(() => {
+    if (visible && status === "idle") play();
+  }, [visible, status, play]);
+
+  useEffect(() => {
+    if (!running) return undefined;
+    const timer = setTimeout(() => {
+      if (step < last) setStep(step + 1);
+      else setStatus("done");
+    }, durations[step]);
+    return () => clearTimeout(timer);
+  }, [running, step, last, durations]);
+
+  // Hold on the final frame for a moment, then start over.
+  useEffect(() => {
+    if (status !== "done" || !visible) return undefined;
+    const timer = setTimeout(play, hold);
+    return () => clearTimeout(timer);
+  }, [status, visible, hold, play]);
 
   return {
     ref,
     step,
     status,
+    cycle,
+    running,
     play,
     pause: () => setStatus("paused"),
     resume: () => setStatus("playing"),
