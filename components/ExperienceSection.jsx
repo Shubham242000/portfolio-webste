@@ -1,22 +1,55 @@
+import { useState } from "react";
 import { experience } from "../content/portfolio";
 
-const ExperienceSection = () => (
-  <section className="section">
-    <div className="section-label">01 / Experience</div>
-    <div className="section-heading"><h2>A few places I’ve helped move things forward.</h2></div>
-    <div className="experience-list">
-      {experience.map((item) => <article className="experience-item" key={`${item.company}-${item.role}`}>
-        <div className="experience-meta"><span>{item.period}</span><span>{item.place}</span></div>
-        <div className="experience-body">
-          <h3><a href={item.href} target="_blank" rel="noreferrer">{item.company} <span>↗</span></a></h3>
-          <p className="role">{item.role}</p>
-          <p>{item.summary}</p>
-          {item.outcomes && <ul>{item.outcomes.map((outcome) => <li key={outcome}>{outcome}</li>)}</ul>}
-        </div>
-      </article>)}
+const ExperienceSection = () => {
+  const [open, setOpen] = useState(() => new Set());
+
+  const toggle = (key) => setOpen((current) => {
+    const next = new Set(current);
+    if (next.has(key)) next.delete(key);
+    else next.add(key);
+    return next;
+  });
+
+  const main = experience.filter((item) => !item.early);
+  const early = experience.filter((item) => item.early);
+
+  return <section className="section">
+    <div className="section-label">02 / Experience</div>
+    <div className="section-heading section-heading--split">
+      <h2>Where I’ve helped move things forward.</h2>
+      <a className="text-link" href="https://drive.google.com/file/d/19xbwFaEGkat9er221LcJ3fxIsKhmDWld/view?usp=sharing" target="_blank" rel="noreferrer">Résumé <span>↗</span></a>
     </div>
-    <a className="button-link" href="https://drive.google.com/file/d/19xbwFaEGkat9er221LcJ3fxIsKhmDWld/view?usp=sharing" target="_blank" rel="noreferrer">View résumé <span>↗</span></a>
-  </section>
-);
+    <div className="experience-list">
+      {main.map((item) => {
+        const key = `${item.company}-${item.role}`;
+        const expanded = open.has(key);
+        return <article className="experience-item" key={key}>
+          <div className="experience-meta"><span>{item.period}</span><span>{item.place}</span></div>
+          <div className="experience-body">
+            <h3><a href={item.href} target="_blank" rel="noreferrer">{item.company} <span>↗</span></a></h3>
+            <p className="role">{item.role}</p>
+            <p>{item.summary}</p>
+            {item.outcomes && <>
+              <button type="button" className="experience-toggle" aria-expanded={expanded} aria-controls={`outcomes-${key}`} onClick={() => toggle(key)}>
+                {expanded ? "Hide outcomes −" : `${item.outcomes.length} outcomes +`}
+              </button>
+              <ul id={`outcomes-${key}`} hidden={!expanded}>{item.outcomes.map((outcome) => <li key={outcome}>{outcome}</li>)}</ul>
+            </>}
+          </div>
+        </article>;
+      })}
+      {early.length > 0 && <article className="experience-item">
+        <div className="experience-meta"><span>Earlier</span><span>Internships</span></div>
+        <div className="experience-body">
+          {early.map((item) => <p className="experience-early" key={item.company}>
+            <a href={item.href} target="_blank" rel="noreferrer">{item.company} <span>↗</span></a>
+            <span>{item.role} · {item.period}</span>
+          </p>)}
+        </div>
+      </article>}
+    </div>
+  </section>;
+};
 
 export default ExperienceSection;

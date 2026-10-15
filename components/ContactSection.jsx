@@ -1,6 +1,6 @@
 const ContactSection = () => (
   <section className="contact">
-    <div className="section-label">03 / Get in touch</div>
+    <div className="section-label">04 / Get in touch</div>
     <h2>Have something meaningful to build?</h2>
     <a className="email-link" href="mailto:shubhamshrivastava2000@gmail.com">Let’s talk <span>↗</span></a>
     <div className="contact-footer">
