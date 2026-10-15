@@ -514,13 +514,73 @@
     }
 }
 
+.work-dots {
+    display: none;
+}
+
 @media (max-width: 680px) {
+    .work-grid {
+        display: flex;
+        gap: 12px;
+        margin: 0 -20px;
+        padding: 0 20px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+    }
+
+    .work-grid::-webkit-scrollbar {
+        display: none;
+    }
+
     .work-card {
-        padding: 18px;
+        flex: 0 0 86%;
+        gap: 14px;
+        padding: 16px;
+        scroll-snap-align: center;
+    }
+
+    .work-card h3 {
+        margin: 4px 0 12px;
+        font-size: 20px;
+    }
+
+    .work-metrics {
+        gap: 20px;
     }
 
     .work-metrics dd {
-        font-size: 28px;
+        font-size: 26px;
+    }
+
+    .work-metrics dt {
+        font-size: 12px;
+    }
+
+    .work-tags {
+        display: none;
+    }
+
+    .work-dots {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 14px;
+    }
+
+    .work-dots button {
+        width: 6px;
+        height: 6px;
+        padding: 0;
+        border: 0;
+        border-radius: 3px;
+        background: var(--line);
+        transition: width .25s, background .25s;
+    }
+
+    .work-dots .is-active {
+        width: 18px;
+        background: var(--accent);
     }
 
     .story-stage {
