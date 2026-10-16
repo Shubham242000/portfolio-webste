@@ -15,7 +15,7 @@ const ExperienceSection = () => {
   const early = experience.filter((item) => item.early);
 
   return <section className="section">
-    <div className="section-label">02 / Experience</div>
+    <div className="section-label">01 / Experience</div>
     <div className="section-heading section-heading--split">
       <h2>Where I’ve helped move things forward.</h2>
       <a className="text-link" href="https://drive.google.com/file/d/19xbwFaEGkat9er221LcJ3fxIsKhmDWld/view?usp=sharing" target="_blank" rel="noreferrer">Résumé <span>↗</span></a>
@@ -30,6 +30,11 @@ const ExperienceSection = () => {
             <h3><a href={item.href} target="_blank" rel="noreferrer">{item.company} <span>↗</span></a></h3>
             <p className="role">{item.role}</p>
             <p>{item.summary}</p>
+            {item.caseStudy && <a className="case-study" href={item.caseStudy.href} target="_blank" rel="noreferrer">
+              <span>Case study · {item.caseStudy.date}</span>
+              <strong>{item.caseStudy.title} <i>↗</i></strong>
+              {item.caseStudy.line}
+            </a>}
             {item.outcomes && <>
               <button type="button" className="experience-toggle" aria-expanded={expanded} aria-controls={`outcomes-${key}`} onClick={() => toggle(key)}>
                 {expanded ? "Hide outcomes −" : `${item.outcomes.length} outcomes +`}

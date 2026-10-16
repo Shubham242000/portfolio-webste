@@ -23,7 +23,7 @@ const OffTheClockSection = () => {
   const current = open === null ? null : postcards[open];
 
   return <section className="section">
-    <div className="section-label">04 / Off the clock</div>
+    <div className="section-label">03 / Off the clock</div>
     <div className="section-heading section-heading--split">
       <div>
         <h2>Postcards from the road.</h2>

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Hobbies from "../components/Hobbies";
 import PixelAvatar from "../components/PixelAvatar";
-import ShowcaseSection from "../components/ShowcaseSection";
 import ExperienceSection from "../components/ExperienceSection";
 import CapabilitiesSection from "../components/CapabilitiesSection";
 import ContactSection from "../components/ContactSection";
@@ -46,7 +45,7 @@ function App() {
   return <div className="site">
     <header className="topbar">
       <a className="wordmark" href="#top" aria-label="Shubham Shrivastava, home">SS<span>·</span></a>
-      <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav>
+      <nav aria-label="Main navigation"><a href="#experience">Experience</a><a href="#off-the-clock">Off the clock</a><a href="#contact">Contact</a></nav>
       <button className="theme-toggle" type="button" onClick={toggleTheme}>{theme === "dark" ? "Light" : "Dark"}</button>
     </header>
 
@@ -56,17 +55,16 @@ function App() {
         <div className="hero-grid">
           <h1>I make complex<br />products feel<br />fast and simple.</h1>
           <div className="hero-aside">
-            <div className="hero-photo" role="img" aria-label="Pixel-art portrait of Shubham Shrivastava"><PixelAvatar /></div>
+            <PixelAvatar />
             <Hobbies />
           </div>
         </div>
         <div className="hero-intro">
           <p>I’m Shubham, a frontend engineer at <a href="https://paypay.co.in/" target="_blank" rel="noreferrer">PayPay India ↗</a>, building payment flows like gift vouchers and stamp cards. Before that, I built AI analytics interfaces at Tellius and made Bajaj Finserv Health’s pages 70% faster for 100K+ monthly visitors.</p>
-          <a className="text-link" href="#work">See it in action <span>↓</span></a>
+          <a className="text-link" href="#experience">See my work <span>↓</span></a>
         </div>
       </section>
 
-      <div id="work" className="anchor"><ShowcaseSection /></div>
       <div id="experience" className="anchor"><ExperienceSection /></div>
       <div id="about" className="anchor"><CapabilitiesSection /></div>
       <div id="off-the-clock" className="anchor"><OffTheClockSection /></div>
