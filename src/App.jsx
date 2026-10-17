@@ -51,7 +51,7 @@ function App() {
 
     <main>
       <section className="hero" id="top">
-        <div className="eyebrow">Frontend engineer · PayPay India · Gurugram</div>
+        <div className="eyebrow">Frontend engineer · SDE-2 · 3+ yrs · Gurugram</div>
         <div className="hero-grid">
           <h1>I make complex<br />products feel<br />fast and simple.</h1>
           <div className="hero-aside">

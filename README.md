@@ -1,12 +1,37 @@
-# React + Vite
+# Portfolio — Shubham Shrivastava
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal site of a frontend engineer (SDE-2 @ PayPay India). Built to be fast,
+calm, and a little bit personal — the site itself is the work sample.
 
-Currently, two official plugins are available:
+**Live:** https://shubham-shrivastava.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Highlights
 
-## Expanding the ESLint configuration
+- **Lean by design** — React + Vite, two runtime dependencies (`react`, `react-dom`),
+  code-split so returning visitors only re-fetch ~9 KB of app code.
+- **Hand-drawn pixel avatar** that blinks, follows the cursor, and waves — rendered
+  as inline SVG, no animation libraries ([`components/PixelAvatar.jsx`](components/PixelAvatar.jsx)).
+- **Custom audio player** with a real Web Audio equalizer, playing a 30s preview
+  ([`components/OnRepeat.jsx`](components/OnRepeat.jsx)).
+- **Postcards lightbox** of travel photos, lazy-loaded and size-reserved to avoid layout shift.
+- **Theming** — light/dark via a `data-theme` attribute set before first paint (no flash),
+  with the choice remembered.
+- **Pixel-art cursor + favicon** generated to match the avatar.
+- Core Web Vitals tracked with Vercel Speed Insights.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Develop
+
+```bash
+npm install
+npm run dev      # local dev server
+npm run build    # production build to dist/
+npm run preview  # serve the production build
+npm run lint
+```
+
+## Structure
+
+- `src/App.jsx` — layout, theme logic, section order
+- `components/` — one file per section, plus the avatar / music / hobbies widgets
+- `content/portfolio.js` — all copy and data (experience, capabilities, postcards, music)
+- `src/App.css` — design tokens and styles
