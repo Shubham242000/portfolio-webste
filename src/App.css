@@ -434,8 +434,43 @@ h1 {
     line-height: 1.65;
 }
 
+/* Collapsible outcomes: animate the grid row from 0fr to 1fr so height eases open. */
+.experience-outcomes {
+    display: grid;
+    grid-template-rows: 0fr;
+    padding-top: 0;
+    opacity: 0;
+    transition: grid-template-rows .3s ease, padding-top .3s ease, opacity .25s ease;
+}
+
+.experience-outcomes.is-open {
+    grid-template-rows: 1fr;
+    padding-top: 12px;
+    opacity: 1;
+}
+
+.experience-outcomes > ul {
+    margin: 0;
+    min-height: 0;
+    overflow: hidden;
+}
+
 .anchor {
     scroll-margin-top: 24px;
+}
+
+/* Scroll-reveal: elements start nudged down and fade up when they enter view
+   (App.jsx adds .is-visible via IntersectionObserver). */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity .55s ease, transform .55s cubic-bezier(.2, .7, .2, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+[data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
 }
 
 .section-note {
@@ -467,6 +502,16 @@ h1 {
     .player-vinyl {
         animation: none;
     }
+
+    [data-reveal] {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .experience-outcomes {
+        transition: none;
+    }
 }
 
 .capability-grid {
@@ -480,6 +525,11 @@ h1 {
     padding: 20px 24px 22px;
     border-bottom: 1px solid var(--line);
     border-right: 1px solid var(--line);
+    transition: background .2s;
+}
+
+.capability:hover {
+    background: var(--panel);
 }
 
 .capability:nth-child(3n + 1) {

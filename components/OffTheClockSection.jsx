@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import OnRepeat from "./OnRepeat";
 import { postcards } from "../content/portfolio";
+import DecodeText from "./DecodeText";
 
 const OffTheClockSection = () => {
   const [open, setOpen] = useState(null);
@@ -23,8 +24,8 @@ const OffTheClockSection = () => {
   const current = open === null ? null : postcards[open];
 
   return <section className="section">
-    <div className="section-label">03 / Off the clock</div>
-    <div className="section-heading section-heading--split">
+    <DecodeText className="section-label" text="03 / Off the clock" />
+    <div className="section-heading section-heading--split" data-reveal>
       <div>
         <h2>Postcards from the road.</h2>
         <p className="section-note">A few places I’ve wandered, shot on my phone. Tap one to see it properly.</p>

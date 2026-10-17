@@ -5,6 +5,7 @@ import ExperienceSection from "../components/ExperienceSection";
 import CapabilitiesSection from "../components/CapabilitiesSection";
 import ContactSection from "../components/ContactSection";
 import OffTheClockSection from "../components/OffTheClockSection";
+import DecodeText from "../components/DecodeText";
 import "./App.css";
 
 const readStoredTheme = () => {
@@ -22,6 +23,24 @@ function App() {
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
   }, [theme]);
+
+  useEffect(() => {
+    const elements = Array.from(document.querySelectorAll("[data-reveal]"));
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || !("IntersectionObserver" in window)) {
+      elements.forEach((el) => el.classList.add("is-visible"));
+      return;
+    }
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        obs.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const preference = window.matchMedia("(prefers-color-scheme: dark)");
@@ -51,7 +70,7 @@ function App() {
 
     <main>
       <section className="hero" id="top">
-        <div className="eyebrow">Frontend engineer · SDE-2 · 3+ yrs · Gurugram</div>
+        <DecodeText className="eyebrow" text="Frontend engineer · SDE-2 · 3+ yrs · Gurugram" />
         <div className="hero-grid">
           <h1>I make complex<br />products feel<br />fast and simple.</h1>
           <div className="hero-aside">
