@@ -18,7 +18,7 @@ const ExperienceSection = () => {
     <div className="section-label">01 / Experience</div>
     <div className="section-heading section-heading--split">
       <h2>Where I’ve helped move things forward.</h2>
-      <a className="text-link" href="https://drive.google.com/file/d/19xbwFaEGkat9er221LcJ3fxIsKhmDWld/view?usp=sharing" target="_blank" rel="noreferrer">Résumé <span>↗</span></a>
+      <a className="text-link" href="https://drive.google.com/file/d/1x1w2ND9Q5H6HVxhoruyR0NBjad696SMf/view?usp=sharing" target="_blank" rel="noreferrer">Résumé <span>↗</span></a>
     </div>
     <div className="experience-list">
       {main.map((item) => {
