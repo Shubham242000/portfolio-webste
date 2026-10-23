@@ -72,7 +72,7 @@ function App() {
       <section className="hero" id="top">
         <DecodeText className="eyebrow" text="Frontend engineer · SDE-2 · 3+ yrs · Gurugram" />
         <div className="hero-grid">
-          <h1>I make complex<br />products feel<br />fast and simple.</h1>
+          <h1>I make complex<br />products feel<br />fast and simple.<piix-pal pal="bitbug" scale="4"></piix-pal></h1>
           <div className="hero-aside">
             <PixelAvatar />
             <Hobbies />

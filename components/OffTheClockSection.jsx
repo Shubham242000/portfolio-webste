@@ -31,6 +31,8 @@ const OffTheClockSection = () => {
         <p className="section-note">A few places I’ve wandered, shot on my phone. Tap one to see it properly.</p>
       </div>
       <OnRepeat />
+      <piix-sprite name="planet" scale="4"></piix-sprite>
+      <piix-pal pal="moss" do="peek" on=".player"></piix-pal>
     </div>
 
     <ul className="postcards">
