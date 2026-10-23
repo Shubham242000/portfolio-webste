@@ -70,16 +70,16 @@ function App() {
 
     <main>
       <section className="hero" id="top">
-        <DecodeText className="eyebrow" text="Frontend engineer · SDE-2 · 3+ yrs · Gurugram" />
+        <DecodeText className="eyebrow" text="Software engineer · SDE-2 · 3+ yrs · Gurugram" />
         <div className="hero-grid">
-          <h1>I make complex<br />products feel<br />fast and simple.<piix-pal pal="bitbug" scale="4"></piix-pal></h1>
+          <h1>I build things<br />for the web.<piix-pal pal="bitbug" scale="4"></piix-pal></h1>
           <div className="hero-aside">
             <PixelAvatar />
             <Hobbies />
           </div>
         </div>
         <div className="hero-intro">
-          <p>I’m Shubham, a frontend engineer at <a href="https://paypay.co.in/" target="_blank" rel="noreferrer">PayPay India ↗</a>, building payment flows like gift vouchers and stamp cards. Before that, I built AI analytics interfaces at Tellius and made Bajaj Finserv Health’s pages 70% faster for 100K+ monthly visitors.</p>
+          <p>I’m Shubham, a software engineer at <a href="https://paypay.co.in/" target="_blank" rel="noreferrer">PayPay India ↗</a>, building payment flows like gift vouchers and stamp cards. Before that, I built AI analytics interfaces at Tellius and made Bajaj Finserv Health’s pages 70% faster for 100K+ monthly visitors.</p>
           <a className="text-link" href="#experience">See my work <span>↓</span></a>
         </div>
       </section>
