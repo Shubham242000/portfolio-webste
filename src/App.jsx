@@ -79,7 +79,7 @@ function App() {
           </div>
         </div>
         <div className="hero-intro">
-          <p>I’m Shubham, a software engineer at <a href="https://paypay.co.in/" target="_blank" rel="noreferrer">PayPay India ↗</a>, building payment flows like gift vouchers and stamp cards. Before that, I built AI analytics interfaces at Tellius and made Bajaj Finserv Health’s pages 70% faster for 100K+ monthly visitors.</p>
+          <p>I’m Shubham, a software engineer at <a href="https://paypay.co.in/" target="_blank" rel="noreferrer">PayPay India ↗</a>, building payment flows like gift vouchers and stamp cards. Before that, I built AI analytics interfaces at <a href="https://tellius.com/" target="_blank" rel="noreferrer">Tellius ↗</a> and made pages at <a href="https://www.bajajfinservhealth.in/" target="_blank" rel="noreferrer">Bajaj Finserv Health ↗</a> 70% faster for 100K+ monthly visitors.</p>
           <a className="text-link" href="#experience">See my work <span>↓</span></a>
         </div>
       </section>
