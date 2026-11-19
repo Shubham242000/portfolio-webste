@@ -6,6 +6,8 @@ import CapabilitiesSection from "../components/CapabilitiesSection";
 import ContactSection from "../components/ContactSection";
 import OffTheClockSection from "../components/OffTheClockSection";
 import DecodeText from "../components/DecodeText";
+import Clock from "../components/Clock";
+import AwayTitle from "../components/AwayTitle";
 import "./App.css";
 
 const readStoredTheme = () => {
@@ -62,6 +64,7 @@ function App() {
   };
 
   return <div className="site">
+    <AwayTitle />
     <header className="topbar">
       <a className="wordmark" href="#top" aria-label="Shubham Shrivastava, home">SS<span>·</span></a>
       <nav aria-label="Main navigation"><a href="#experience">Experience</a><a href="#off-the-clock">Off the clock</a><a href="#contact">Contact</a></nav>
@@ -70,7 +73,10 @@ function App() {
 
     <main>
       <section className="hero" id="top">
-        <DecodeText className="eyebrow" text="Software engineer · SDE-2 · 3+ yrs · Gurugram" />
+        <div className="hero-status">
+          <DecodeText className="eyebrow" text="Software engineer · SDE-2 · 3+ yrs · Gurugram" />
+          <Clock />
+        </div>
         <div className="hero-grid">
           <h1>I build things<br />for the web.<piix-pal pal="bitbug" scale="4"></piix-pal></h1>
           <div className="hero-aside">

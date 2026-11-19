@@ -138,6 +138,21 @@ nav a:hover,
     text-transform: uppercase;
 }
 
+/* Hero status row: role eyebrow on the left, live local time on the right. */
+.hero-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* Live clock — reuses .eyebrow type; tabular figures so it doesn't jitter as digits tick. */
+.clock {
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
 .hero-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 230px;
