@@ -6,7 +6,6 @@ const ContactSection = () => (
     <h2>Have something meaningful to build?</h2>
     <p className="contact-note">Always happy to talk code, swap travel tips, or share a playlist.</p>
     <a className="email-link" href="mailto:shubhamshrivastava2000@gmail.com">Let’s talk <span>↗</span></a>
-    <piix-pal pal="boing" do="bounce" on=".contact-footer"></piix-pal>
     <div className="contact-footer">
       <span>© {new Date().getFullYear()} Shubham Shrivastava</span>
       <div>

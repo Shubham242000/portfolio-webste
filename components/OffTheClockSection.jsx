@@ -29,7 +29,6 @@ const OffTheClockSection = () => {
         <h2>Postcards from the road.</h2>
         <p className="section-note">A few places I’ve wandered, shot on my phone. Tap one to see it properly.</p>
       </div>
-      <piix-sprite name="planet" scale="4"></piix-sprite>
     </div>
 
     <ul className="postcards">

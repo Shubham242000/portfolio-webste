@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Hobbies from "../components/Hobbies";
-import PixelAvatar from "../components/PixelAvatar";
+import Portrait from "../components/Portrait";
 import ExperienceSection from "../components/ExperienceSection";
 import CapabilitiesSection from "../components/CapabilitiesSection";
 import ContactSection from "../components/ContactSection";
@@ -78,15 +78,14 @@ function App() {
           <Clock />
         </div>
         <div className="hero-grid">
-          <h1>I build things<br />for the web.<piix-pal pal="bitbug" scale="4"></piix-pal></h1>
+          <h1>I build things<br />for the web.</h1>
           <div className="hero-aside">
-            <PixelAvatar />
+            <Portrait />
+          </div>
+          <div className="hero-intro">
+            <p>I’m Shubham, a software engineer at <a href="https://paypay.co.in/" target="_blank" rel="noreferrer">PayPay India ↗</a>, building payment flows like gift vouchers and stamp cards. Before that, I built AI analytics interfaces at <a href="https://tellius.com/" target="_blank" rel="noreferrer">Tellius ↗</a> and made pages at <a href="https://www.bajajfinservhealth.in/" target="_blank" rel="noreferrer">Bajaj Finserv Health ↗</a> 70% faster for 100K+ monthly visitors.</p>
             <Hobbies />
           </div>
-        </div>
-        <div className="hero-intro">
-          <p>I’m Shubham, a software engineer at <a href="https://paypay.co.in/" target="_blank" rel="noreferrer">PayPay India ↗</a>, building payment flows like gift vouchers and stamp cards. Before that, I built AI analytics interfaces at <a href="https://tellius.com/" target="_blank" rel="noreferrer">Tellius ↗</a> and made pages at <a href="https://www.bajajfinservhealth.in/" target="_blank" rel="noreferrer">Bajaj Finserv Health ↗</a> 70% faster for 100K+ monthly visitors.</p>
-          <a className="text-link" href="#experience">See my work <span>↓</span></a>
         </div>
       </section>
 

@@ -19,16 +19,6 @@ export const postcards = [
   { place: "Chikkamagaluru", file: "chikkamagaluru", width: 570, height: 760, focus: "60% 70%" },
 ];
 
-// The player uses Apple's official 30-second preview clip (from the iTunes Search API:
-// itunes.apple.com/lookup?id=<apple track id>&country=in → previewUrl, artworkUrl100) and links to Spotify for the full song.
-export const onRepeat = {
-  title: "Yeh Duniya",
-  artist: "Curtain Blue",
-  previewUrl: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/61/a2/b7/61a2b78a-0f19-ed45-5752-28cf22d8d646/mzaf_8138752179632452915.plus.aac.p.m4a",
-  artworkUrl: "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/86/b0/c5/86b0c58c-cb2b-bf54-1baf-48484b68b21b/1200214833657.jpg/200x200bb.jpg",
-  spotifyUrl: "https://open.spotify.com/track/3afNMElBBtkRPyR79DMyMJ",
-};
-
 export const capabilities = [
   ["Frontend systems", "React, Next.js, Vue.js, TypeScript, JavaScript"],
   ["Backend integration", "Node.js, NestJS, REST APIs, SSE, WebSockets"],

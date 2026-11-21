@@ -9,14 +9,12 @@ calm, and a little bit personal — the site itself is the work sample.
 
 - **Lean by design** — React + Vite, two runtime dependencies (`react`, `react-dom`),
   code-split so returning visitors only re-fetch ~9 KB of app code.
-- **Hand-drawn pixel avatar** that blinks, follows the cursor, and waves — rendered
-  as inline SVG, no animation libraries ([`components/PixelAvatar.jsx`](components/PixelAvatar.jsx)).
-- **Custom audio player** with a real Web Audio equalizer, playing a 30s preview
-  ([`components/OnRepeat.jsx`](components/OnRepeat.jsx)).
+- **Ink portrait** with its background cut away, so it stands on the hero's closing line in
+  both themes — responsive WebP (61 KB at 1×, 113 KB at 2×) with fixed dimensions to avoid layout shift
+  ([`components/Portrait.jsx`](components/Portrait.jsx)).
 - **Postcards lightbox** of travel photos, lazy-loaded and size-reserved to avoid layout shift.
 - **Theming** — light/dark via a `data-theme` attribute set before first paint (no flash),
   with the choice remembered.
-- **Pixel-art cursor + favicon** generated to match the avatar.
 - Core Web Vitals tracked with Vercel Speed Insights.
 
 ## Develop
@@ -32,6 +30,6 @@ npm run lint
 ## Structure
 
 - `src/App.jsx` — layout, theme logic, section order
-- `components/` — one file per section, plus the avatar / music / hobbies widgets
-- `content/portfolio.js` — all copy and data (experience, capabilities, postcards, music)
+- `components/` — one file per section, plus the portrait / clock / hobbies widgets
+- `content/portfolio.js` — all copy and data (experience, capabilities, postcards)
 - `src/App.css` — design tokens and styles
