@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 // Open/closed state for the lazy postcard modal. `mounted` stays true after the first open
-// so a half-written postcard survives closing the modal.
+// so reopening doesn't wait on the lazy chunk again.
 export const usePostcardLauncher = () => {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);

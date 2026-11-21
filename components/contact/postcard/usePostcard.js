@@ -29,7 +29,6 @@ const createPostmark = () => {
   const broad = !timeZone || BROAD_ZONES.has(timeZone) || timeZone.startsWith("Etc/") || !timeZone.includes("/");
   const now = new Date();
   return {
-    timeZone,
     city: broad ? "Somewhere online" : timeZone.split("/").pop().replace(/_/g, " "),
     date: `${now.getDate()} ${MONTHS[now.getMonth()]} ${String(now.getFullYear()).slice(2)}`,
   };
@@ -75,12 +74,8 @@ export const usePostcard = ({ open, onClose }) => {
     try {
       await sendPostcard({
         message: text,
-        anonymous,
         name: anonymous ? null : name.trim(),
         email: anonymous ? null : email.trim(),
-        stamp: deck.card.file,
-        postmark: { city: postmark.city, timeZone: postmark.timeZone || null },
-        sentAt: new Date().toISOString(),
       });
       setSentAs({ anonymous, name: anonymous ? "" : name.trim() });
       setStatus("sent");
@@ -97,10 +92,12 @@ export const usePostcard = ({ open, onClose }) => {
     setStatus("idle");
   };
 
-  // Reopening after a send starts a fresh card rather than showing the "delivered" one again.
+  // Closing (button, Escape or backdrop) clears the card, so reopening always starts fresh.
   const close = () => {
     onClose();
-    if (sent) writeAnother();
+    writeAnother();
+    setName("");
+    setEmail("");
   };
 
   const firstName = sentAs?.name.split(" ")[0];
