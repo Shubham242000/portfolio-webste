@@ -1,11 +1,17 @@
-import DecodeText from "./DecodeText";
+import { useState } from "react";
+import ContactForm from "./contactForm";
+import DecodeText from "../DecodeText";
 
-const ContactSection = () => (
-  <section className="contact">
+const ContactSection = () => {
+  const [form, setForm] = useState(false);
+  return <section className="contact">
     <DecodeText className="section-label" text="04 / Get in touch" />
     <h2>Have something meaningful to build?</h2>
     <p className="contact-note">Always happy to talk code, swap travel tips, or share a playlist.</p>
-    <a className="email-link" href="mailto:shubhamshrivastava2000@gmail.com">Let’s talk <span>↗</span></a>
+    <button className="email-link" onClick={() => setForm(true)}>Let's talk</button>
+
+    {form && <ContactForm onClose={() => setForm(!form)} />}
+
     <div className="contact-footer">
       <span>© {new Date().getFullYear()} Shubham Shrivastava</span>
       <div>
@@ -16,6 +22,6 @@ const ContactSection = () => (
       </div>
     </div>
   </section>
-);
+};
 
 export default ContactSection;

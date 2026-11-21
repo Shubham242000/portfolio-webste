@@ -3,7 +3,7 @@ import Hobbies from "../components/Hobbies";
 import Portrait from "../components/Portrait";
 import ExperienceSection from "../components/ExperienceSection";
 import CapabilitiesSection from "../components/CapabilitiesSection";
-import ContactSection from "../components/ContactSection";
+import ContactSection from "../components/contact/ContactSection";
 import OffTheClockSection from "../components/OffTheClockSection";
 import DecodeText from "../components/DecodeText";
 import Clock from "../components/Clock";
