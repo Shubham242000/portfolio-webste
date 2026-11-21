@@ -277,14 +277,22 @@ textarea.pc-lines:focus {
         overflow-y: auto;
         overscroll-behavior: contain;
         padding: 14px 16px 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Header, picker and buttons keep their size; the card stack takes whatever height is left. */
+    .pc-scroll>* {
+        flex-shrink: 0;
     }
 
     .pc-head {
         align-items: flex-start;
     }
 
+    /* The title says enough on a phone; drop the eyebrow to save height. */
     .pc-eyebrow {
-        font-size: 11px;
+        display: none;
     }
 
     .pc-head h2 {
@@ -292,6 +300,9 @@ textarea.pc-lines:focus {
     }
 
     .pc-stack {
+        flex: 1 0 auto;
+        display: flex;
+        flex-direction: column;
         margin-top: 12px;
     }
 
@@ -304,10 +315,12 @@ textarea.pc-lines:focus {
     }
 
     .pc-card {
+        flex: 1 0 auto;
         height: auto;
         padding: 16px 18px 14px;
         grid-template-columns: minmax(0, 1fr);
-        grid-template-rows: none;
+        /* The message row absorbs the spare height. */
+        grid-template-rows: auto auto auto 1fr auto auto auto;
         grid-template-areas:
             "label"
             "mark"
@@ -338,14 +351,10 @@ textarea.pc-lines:focus {
         margin-top: 8px;
     }
 
+    /* Grows into the space the card is given; never fewer than two ruled lines. */
     .pc-lines {
-        flex: none;
-        height: 108px;
+        min-height: 72px;
         font-size: 24px;
-    }
-
-    p.pc-lines {
-        height: 144px;
     }
 
     .pc-divider {
