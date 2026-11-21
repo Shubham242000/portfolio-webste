@@ -215,7 +215,10 @@ h1 {
 }
 
 @keyframes hobby-in {
-    from { opacity: 0; transform: translateY(6px); }
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
 }
 
 
@@ -303,7 +306,7 @@ h1 {
     color: var(--accent);
 }
 
-.experience-early > span {
+.experience-early>span {
     color: var(--muted);
     font: 12px "Geist Mono", ui-monospace, monospace;
 }
@@ -420,7 +423,7 @@ h1 {
     opacity: 1;
 }
 
-.experience-outcomes > ul {
+.experience-outcomes>ul {
     margin: 0;
     min-height: 0;
     overflow: hidden;
@@ -541,7 +544,7 @@ h1 {
     isolation: isolate;
 }
 
-.contact > * {
+.contact>* {
     position: relative;
 }
 
@@ -564,7 +567,12 @@ h1 {
 
 /* No photo in dark mode for now; the section stays a clean dark page. */
 :root[data-theme="dark"] .contact-scenery {
-    display: none;
+    background:
+        linear-gradient(to bottom, transparent 30%, rgba(6, 14, 28, .5) 100%),
+        url("/darkbg2.jpg") center 35% / cover no-repeat;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, .55) 45%, #000 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, .55) 45%, #000 100%);
+    pointer-events: none;
 }
 
 /* Footer and quote sit on the darker part of the photo, so they switch to light text (light theme only). */
@@ -629,12 +637,29 @@ h1 {
     margin-left: 0;
 }
 
-.postcards li:nth-child(2) { --tilt: 2.5deg; }
-.postcards li:nth-child(3) { --tilt: -1.5deg; }
-.postcards li:nth-child(4) { --tilt: 3.5deg; }
-.postcards li:nth-child(5) { --tilt: -2.5deg; }
-.postcards li:nth-child(6) { --tilt: 2deg; }
-.postcards li:nth-child(7) { --tilt: -2deg; }
+.postcards li:nth-child(2) {
+    --tilt: 2.5deg;
+}
+
+.postcards li:nth-child(3) {
+    --tilt: -1.5deg;
+}
+
+.postcards li:nth-child(4) {
+    --tilt: 3.5deg;
+}
+
+.postcards li:nth-child(5) {
+    --tilt: -2.5deg;
+}
+
+.postcards li:nth-child(6) {
+    --tilt: 2deg;
+}
+
+.postcards li:nth-child(7) {
+    --tilt: -2deg;
+}
 
 .postcard {
     position: relative;
@@ -726,48 +751,41 @@ h1 {
     border-color: #fff;
 }
 
-/* Sized just under the hero h1 so the page doesn't end louder than it starts. */
+/* Sized well under the hero h1 so the page doesn't end louder than it starts. */
 .contact-cta {
     display: inline-flex;
     align-items: baseline;
-    gap: .22em;
+    gap: .1em;
     margin-top: 24px;
-    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-size: clamp(2.6rem, 7vw, 4.8rem);
     font-weight: 500;
     letter-spacing: -.055em;
     line-height: 1;
-    transition: color .25s;
 }
 
-/* Underline only under the words, drawn as a background so it can wipe from ink to cobalt on hover. */
+/* No resting underline: a thin cobalt line draws in from the left on hover. */
 .contact-cta-text {
-    padding-bottom: .1em;
-    background:
-        linear-gradient(var(--accent), var(--accent)) left bottom / 0% 2px no-repeat,
-        linear-gradient(var(--ink), var(--ink)) left bottom / 100% 2px no-repeat;
+    padding-bottom: .08em;
+    background: linear-gradient(var(--accent), var(--accent)) left bottom / 0% 2px no-repeat;
     transition: background-size .45s cubic-bezier(.2, .7, .2, 1);
 }
 
+/* Sits on the text baseline, just after "talk". */
 .contact-cta-arrow {
     color: var(--accent);
     font-size: .5em;
     letter-spacing: 0;
-    transition: transform .25s;
-}
-
-.contact-cta:hover,
-.contact-cta:focus-visible {
-    color: var(--accent);
+    transition: transform .3s cubic-bezier(.2, .7, .2, 1);
 }
 
 .contact-cta:hover .contact-cta-text,
 .contact-cta:focus-visible .contact-cta-text {
-    background-size: 100% 2px, 100% 2px;
+    background-size: 100% 2px;
 }
 
 .contact-cta:hover .contact-cta-arrow,
 .contact-cta:focus-visible .contact-cta-arrow {
-    transform: translate(.12em, -.12em);
+    transform: translate(.18em, -.18em);
 }
 
 .contact-cta:focus-visible {
@@ -828,15 +846,25 @@ h1 {
 }
 
 @keyframes quote-in {
-    from { opacity: 0; transform: translateY(6px); }
-    to { opacity: 1; transform: none; }
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
 }
 
 @keyframes quote-shimmer {
-    to { background-position: -200% 0; }
+    to {
+        background-position: -200% 0;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .quote blockquote,
     .quote-skeleton {
         animation: none;
