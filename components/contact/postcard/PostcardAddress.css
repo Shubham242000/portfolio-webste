@@ -1,0 +1,71 @@
+.pc-small,
+.pc-field>span {
+    font: 11px/1.3 "Geist Mono", ui-monospace, monospace;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.pc-from {
+    grid-area: from;
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.pc-small {
+    margin-bottom: 4px;
+}
+
+.pc-from-sent,
+.pc-field {
+    border-bottom: 1px solid var(--pc-line);
+}
+
+.pc-field {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    height: 38px;
+    cursor: text;
+}
+
+.pc-field:focus-within {
+    border-bottom-color: currentColor;
+}
+
+.pc-field>span {
+    flex: none;
+    width: 44px;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.pc-field input {
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: 22px/36px "Caveat", cursive;
+}
+
+.pc-field input:focus {
+    outline: none;
+}
+
+.pc-from-sent {
+    font: 24px/36px "Caveat", cursive;
+}
+
+/* Phone: a bottom sheet with an upright card and a stamp picker */
+@media (max-width: 719px) {
+    .pc-from {
+        margin-top: 12px;
+    }
+
+    .pc-small,
+    .pc-field>span {
+        font-size: 10px;
+    }
+}

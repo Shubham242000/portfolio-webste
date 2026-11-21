@@ -1,26 +1,10 @@
-import { useEffect, useRef, useState } from "react";
 import { postcards } from "../content/portfolio";
+import { useLightbox } from "./useLightbox";
 import DecodeText from "./DecodeText";
 
 const OffTheClockSection = () => {
-  const [open, setOpen] = useState(null);
-  const dialogRef = useRef(null);
-
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-    if (open !== null && !dialog.open) dialog.showModal();
-    if (open === null && dialog.open) dialog.close();
-  }, [open]);
-
-  const step = (offset) => setOpen((index) => (index + offset + postcards.length) % postcards.length);
-
-  const onKeyDown = (event) => {
-    if (event.key === "ArrowRight") step(1);
-    if (event.key === "ArrowLeft") step(-1);
-  };
-
-  const current = open === null ? null : postcards[open];
+  const lightbox = useLightbox(postcards.length);
+  const current = lightbox.index === null ? null : postcards[lightbox.index];
 
   return <section className="section">
     <DecodeText className="section-label" text="03 / Off the clock" />
@@ -33,7 +17,7 @@ const OffTheClockSection = () => {
 
     <ul className="postcards">
       {postcards.map((card, index) => <li key={card.file}>
-        <button type="button" className="postcard" onClick={() => setOpen(index)} aria-label={`Open photo from ${card.place}`}>
+        <button type="button" className="postcard" onClick={() => lightbox.open(index)} aria-label={`Open photo from ${card.place}`}>
           <img
             src={`/trips/${card.file}-sm.jpg`}
             alt={`Photo from ${card.place}`}
@@ -49,11 +33,11 @@ const OffTheClockSection = () => {
     </ul>
 
     <dialog
-      ref={dialogRef}
+      ref={lightbox.dialogRef}
       className="lightbox"
-      onClose={() => setOpen(null)}
-      onKeyDown={onKeyDown}
-      onClick={(event) => { if (event.target === event.currentTarget) setOpen(null); }}
+      onClose={lightbox.close}
+      onKeyDown={lightbox.onKeyDown}
+      onClick={lightbox.onBackdropClick}
       aria-label={current ? `Photo from ${current.place}` : "Photo"}
     >
       {current && <figure>
@@ -61,10 +45,10 @@ const OffTheClockSection = () => {
         <figcaption>
           <span>{current.place}</span>
           <span className="lightbox-controls">
-            <button type="button" onClick={() => step(-1)} aria-label="Previous photo">←</button>
-            <span>{open + 1} / {postcards.length}</span>
-            <button type="button" onClick={() => step(1)} aria-label="Next photo">→</button>
-            <button type="button" onClick={() => setOpen(null)} aria-label="Close">✕</button>
+            <button type="button" onClick={() => lightbox.step(-1)} aria-label="Previous photo">←</button>
+            <span>{lightbox.index + 1} / {postcards.length}</span>
+            <button type="button" onClick={() => lightbox.step(1)} aria-label="Next photo">→</button>
+            <button type="button" onClick={lightbox.close} aria-label="Close">✕</button>
           </span>
         </figcaption>
       </figure>}

@@ -1,0 +1,82 @@
+/* Stamp picker: the phone layout's way to change stamps (desktop uses the button under the card). */
+.pc-stamps {
+    display: none;
+}
+
+/* Phone: a bottom sheet with an upright card and a stamp picker */
+@media (max-width: 719px) {
+    .pc-stamps {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 14px;
+    }
+
+    .pc-stamps-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        color: var(--pc-muted);
+        font: 11px "Geist Mono", ui-monospace, monospace;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+    }
+
+    .pc-stamps-head span:last-child {
+        color: var(--pc-fg);
+    }
+
+    .pc-stamps-row {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 6px;
+    }
+
+    .pc-stamp-option {
+        display: grid;
+        place-items: center;
+        height: 70px;
+        padding: 0;
+        border: 0;
+        background: none;
+    }
+
+    .pc-stamp-option>span {
+        display: block;
+        width: 44px;
+        height: 56px;
+        padding: 2px;
+        border: 2px dotted var(--pc-sheet);
+        background: #fffdf8;
+        box-shadow: var(--pc-shadow-option);
+        opacity: .72;
+        transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+    }
+
+    .pc-stamp-option:nth-child(odd)>span {
+        transform: rotate(-1.5deg);
+    }
+
+    .pc-stamp-option:nth-child(even)>span {
+        transform: rotate(2deg);
+    }
+
+    .pc-stamp-option[aria-pressed="true"]>span {
+        opacity: 1;
+        transform: translateY(-5px) rotate(-3deg);
+        box-shadow: 0 0 0 2px var(--pc-fg), var(--pc-shadow-option-on);
+    }
+
+    .pc-stamp-option img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pc-stamp-option>span {
+        transition: none;
+    }
+}

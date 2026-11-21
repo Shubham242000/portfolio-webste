@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Hobbies from "../components/Hobbies";
 import Portrait from "../components/Portrait";
 import ExperienceSection from "../components/ExperienceSection";
@@ -7,64 +6,17 @@ import ContactSection from "../components/contact/ContactSection";
 import OffTheClockSection from "../components/OffTheClockSection";
 import DecodeText from "../components/DecodeText";
 import Clock from "../components/Clock";
-import AwayTitle from "../components/AwayTitle";
+import { useTheme } from "./hooks/useTheme";
+import { useScrollReveal } from "./hooks/useScrollReveal";
+import { useAwayTitle } from "./hooks/useAwayTitle";
 import "./App.css";
 
-const readStoredTheme = () => {
-  try {
-    return localStorage.getItem("theme");
-  } catch {
-    return null;
-  }
-};
-
 function App() {
-  // index.html sets data-theme before first paint, so this never flashes the wrong theme.
-  const [theme, setTheme] = useState(() => document.documentElement.dataset.theme || "light");
-
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme;
-  }, [theme]);
-
-  useEffect(() => {
-    const elements = Array.from(document.querySelectorAll("[data-reveal]"));
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce || !("IntersectionObserver" in window)) {
-      elements.forEach((el) => el.classList.add("is-visible"));
-      return;
-    }
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
-        obs.unobserve(entry.target);
-      });
-    }, { rootMargin: "0px 0px -8% 0px" });
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const preference = window.matchMedia("(prefers-color-scheme: dark)");
-    const handleChange = (event) => {
-      if (!readStoredTheme()) setTheme(event.matches ? "dark" : "light");
-    };
-    preference.addEventListener("change", handleChange);
-    return () => preference.removeEventListener("change", handleChange);
-  }, []);
-
-  const toggleTheme = () => {
-    const next = theme === "dark" ? "light" : "dark";
-    setTheme(next);
-    try {
-      localStorage.setItem("theme", next);
-    } catch {
-      // Storage can be unavailable (private mode); the choice then lasts for this visit only.
-    }
-  };
+  const [theme, toggleTheme] = useTheme();
+  useScrollReveal();
+  useAwayTitle("i noticed you left");
 
   return <div className="site">
-    <AwayTitle />
     <header className="topbar">
       <a className="wordmark" href="#top" aria-label="Shubham Shrivastava, home">SS<span>·</span></a>
       <nav aria-label="Main navigation"><a href="#experience">Experience</a><a href="#off-the-clock">Off the clock</a><a href="#contact">Contact</a></nav>

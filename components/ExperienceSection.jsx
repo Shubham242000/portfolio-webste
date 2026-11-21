@@ -1,19 +1,8 @@
-import { useState } from "react";
-import { experience } from "../content/portfolio";
+import { useExperience } from "./useExperience";
 import DecodeText from "./DecodeText";
 
 const ExperienceSection = () => {
-  const [open, setOpen] = useState(() => new Set());
-
-  const toggle = (key) => setOpen((current) => {
-    const next = new Set(current);
-    if (next.has(key)) next.delete(key);
-    else next.add(key);
-    return next;
-  });
-
-  const main = experience.filter((item) => !item.early);
-  const early = experience.filter((item) => item.early);
+  const { main, early, isOpen, toggle } = useExperience();
 
   return <section className="section">
     <DecodeText className="section-label" text="01 / Experience" />
@@ -24,7 +13,7 @@ const ExperienceSection = () => {
     <div className="experience-list">
       {main.map((item, index) => {
         const key = `${item.company}-${item.role}`;
-        const expanded = open.has(key);
+        const expanded = isOpen(key);
         return <article className="experience-item" key={key} data-reveal style={{ "--reveal-delay": `${index * 70}ms` }}>
           <div className="experience-meta"><span>{item.period}</span><span>{item.place}</span></div>
           <div className="experience-body">

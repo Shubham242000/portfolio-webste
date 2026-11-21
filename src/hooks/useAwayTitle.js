@@ -1,21 +1,16 @@
 import { useEffect } from "react";
 
-const AWAY_TITLE = "i noticed you left";
-
-const AwayTitle = () => {
+// Swaps the tab title while the visitor is on another tab, and puts it back when they return.
+export const useAwayTitle = (awayTitle) => {
   useEffect(() => {
     const original = document.title;
     const onVisibility = () => {
-      document.title = document.hidden ? AWAY_TITLE : original;
+      document.title = document.hidden ? awayTitle : original;
     };
     document.addEventListener("visibilitychange", onVisibility);
     return () => {
       document.removeEventListener("visibilitychange", onVisibility);
       document.title = original;
     };
-  }, []);
-
-  return null;
+  }, [awayTitle]);
 };
-
-export default AwayTitle;

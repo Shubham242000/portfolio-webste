@@ -1,0 +1,170 @@
+/* Actions */
+.pc-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.pc-send {
+    display: flex;
+    gap: 12px;
+}
+
+.pc-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    height: 44px;
+    padding: 0 12px 0 8px;
+    border: 0;
+    background: none;
+    color: var(--pc-fg);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.pc-ghost:hover {
+    color: var(--pc-strong);
+}
+
+.pc-ghost svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.pc-shuffle-count {
+    color: var(--pc-muted);
+    font: 12px "Geist Mono", ui-monospace, monospace;
+}
+
+.pc-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 48px;
+    padding: 0 22px;
+    border: 1px solid transparent;
+    background: var(--pc-btn-bg);
+    color: var(--pc-btn-fg);
+    font-size: 15px;
+    font-weight: 600;
+    transition: background .2s, border-color .2s;
+}
+
+.pc-btn:hover {
+    background: var(--pc-btn-hover);
+}
+
+.pc-btn--outline {
+    border-color: var(--pc-edge-30);
+    background: none;
+    color: var(--pc-fg);
+    font-weight: 500;
+}
+
+.pc-btn--outline:hover {
+    border-color: var(--pc-fg);
+    background: none;
+}
+
+.pc-btn:disabled,
+.pc-ghost:disabled {
+    opacity: .6;
+    cursor: default;
+}
+
+.pc-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.pc-status {
+    order: 3;
+    flex-basis: 100%;
+    min-height: 20px;
+    margin: -4px 0 0;
+    color: var(--pc-error);
+    font-size: 14px;
+    text-align: right;
+}
+
+.pc-status:empty {
+    display: none;
+}
+
+.pc-status a {
+    color: var(--pc-fg);
+    border-bottom: 1px solid var(--pc-focus);
+}
+
+.pc-status a:focus-visible {
+    outline: 2px solid var(--pc-focus);
+    outline-offset: 3px;
+}
+
+/* Phone: a bottom sheet with an upright card and a stamp picker */
+@media (max-width: 719px) {
+    /* Changing stamps happens in the picker above the card on phones. */
+    .pc-shuffle {
+        display: none;
+    }
+
+    .pc-actions {
+        position: sticky;
+        bottom: 0;
+        z-index: 1;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        margin: 20px -16px 0;
+        padding: 12px 16px calc(16px + env(safe-area-inset-bottom));
+        border-top: 1px solid var(--pc-edge-08);
+        background: var(--pc-sheet);
+    }
+
+    .pc-send {
+        flex-direction: column-reverse;
+        gap: 10px;
+    }
+
+    .pc-btn {
+        height: 50px;
+        font-size: 16px;
+    }
+
+    .pc-actions .pc-ghost {
+        order: 2;
+        justify-content: center;
+        border: 1px solid var(--pc-edge-30);
+        height: 50px;
+        font-size: 16px;
+    }
+
+    .pc-status {
+        order: -1;
+        margin: 0;
+        min-height: 0;
+        text-align: center;
+        font-size: 13px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pc-btn {
+        transition: none;
+    }
+}

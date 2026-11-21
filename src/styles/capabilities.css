@@ -1,0 +1,61 @@
+.capability-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 28px;
+    border-top: 1px solid var(--line);
+}
+
+.capability {
+    padding: 20px 24px 22px;
+    border-bottom: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+    transition: background .2s;
+}
+
+.capability:hover {
+    background: var(--panel);
+}
+
+.capability:nth-child(3n + 1) {
+    padding-left: 0;
+}
+
+.capability:nth-child(3n) {
+    border-right: 0;
+}
+
+.capability>span {
+    color: var(--accent);
+    font: 11px "Geist Mono", ui-monospace, monospace;
+}
+
+.capability h3 {
+    margin: 22px 0 6px;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -.025em;
+}
+
+.capability p {
+    margin: 0;
+    max-width: 330px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+@media (max-width:680px) {
+    .capability-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .capability,
+    .capability:nth-child(3n + 1) {
+        padding: 18px 0;
+        border-right: 0;
+    }
+
+    .capability h3 {
+        margin-top: 12px;
+    }
+}

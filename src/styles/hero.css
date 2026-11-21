@@ -1,0 +1,149 @@
+.hero {
+    padding-top: 80px;
+    padding-bottom: 88px;
+}
+
+/* Hero status row: role eyebrow on the left, live local time on the right. */
+.hero-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* Live clock — reuses .eyebrow type; tabular figures so it doesn't jitter as digits tick. */
+.clock {
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(300px, 40vw, 500px);
+    column-gap: 48px;
+    align-items: start;
+    margin-top: 22px;
+}
+
+/* Right column: the ink portrait, as tall as the left column — its top level with the headline,
+   standing on the line that closes the hero (it reaches down through the hero's bottom padding). */
+.hero-aside {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    position: relative;
+    align-self: stretch;
+    margin-bottom: -88px;
+}
+
+h1 {
+    max-width: 850px;
+    font-size: clamp(3.2rem, 6.6vw, 6.4rem);
+    line-height: .95;
+}
+
+.hero-photo {
+    /* Fills the column's height; may borrow the 48px gap on its left when the column is narrow. */
+    position: absolute;
+    inset: 6px 0 0 -48px;
+    width: calc(100% + 48px);
+    height: calc(100% - 6px);
+    object-fit: contain;
+    object-position: right bottom;
+    transition: filter .25s;
+}
+
+/* Take the edge off the white skin tones against the dark page. */
+:root[data-theme="dark"] .hero-photo {
+    filter: brightness(.92);
+}
+
+.hero-intro .hobbies {
+    margin: -12px 0 0;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.6;
+    letter-spacing: normal;
+}
+
+.hobbies-now {
+    display: inline-block;
+    color: var(--ink);
+    font-weight: 500;
+    animation: hobby-in .4s ease-out;
+}
+
+@keyframes hobby-in {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+}
+
+.hero-intro p a {
+    color: var(--ink);
+    border-bottom: 1px solid var(--accent);
+}
+
+.hero-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 545px);
+    justify-items: start;
+    gap: 28px;
+    margin-top: 56px;
+}
+
+.hero-intro p {
+    margin: 0;
+    font-size: 19px;
+    line-height: 1.48;
+    letter-spacing: -.02em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hobbies-now {
+        animation: none;
+    }
+}
+
+@media (max-width:680px) {
+    .hero {
+        padding-top: 48px;
+        padding-bottom: 64px;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+/* Phones: headline, intro, then the portrait standing on the hero's closing line. */
+    .hero-aside {
+        grid-column: auto;
+        grid-row: auto;
+        order: 1;
+        margin-bottom: -64px;
+    }
+
+    .hero-photo {
+        position: static;
+        display: block;
+        width: min(100%, 300px);
+        height: auto;
+        margin-left: auto;
+    }
+
+    .hero-intro {
+        display: block;
+        margin-top: 24px;
+    }
+
+    .hero-intro p {
+        font-size: 17px;
+    }
+
+    .hero-intro .hobbies {
+        margin-top: 16px;
+        font-size: 14px;
+    }
+}
