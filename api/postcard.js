@@ -1,9 +1,10 @@
 // Vercel Function behind the "Let's talk" postcard: validates the postcard, adds the sender's rough
 // location from Vercel's geo headers, and inserts a row into the Supabase `messages` table.
 //
-// Server-only env vars (set in Vercel → Project → Settings → Environment Variables):
-//   POSTCARD_ENDPOINT  https://<project>.supabase.co/rest/v1/messages
-//   SUPABASE_KEY       the project's publishable key (RLS still allows only inserts)
+// Env vars (must be set in Vercel → Project → Settings → Environment Variables; the deployed
+// function doesn't read the repo's .env):
+//   VITE_POSTCARD_ENDPOINT         https://<project>.supabase.co/rest/v1/messages
+//   VITE_SUPABASE_PUBLISHABLE_KEY  the project's publishable key (RLS still allows only inserts)
 //
 // Location comes from the request IP, so it's approximate (and wrong behind a VPN). Anonymous
 // postcards only keep the country, so "Send anonymously" stays meaningfully anonymous.
@@ -25,7 +26,7 @@ function geoHeader(request, name) {
 const json = (body, status) => Response.json(body, { status });
 
 export async function POST(request) {
-  const { POSTCARD_ENDPOINT, SUPABASE_KEY } = process.env;
+  const { VITE_POSTCARD_ENDPOINT: POSTCARD_ENDPOINT, VITE_SUPABASE_PUBLISHABLE_KEY: SUPABASE_KEY } = process.env;
   if (!POSTCARD_ENDPOINT || !SUPABASE_KEY) return json({ error: "Postcards aren't configured" }, 500);
 
   let body;
