@@ -1,5 +1,7 @@
 @media (prefers-reduced-motion: reduce) {
-    .postcard {
+
+    .postcard,
+    .postcard img {
         transition: none;
     }
 }
@@ -73,6 +75,15 @@
     height: auto;
     aspect-ratio: 4 / 5;
     object-fit: cover;
+    /* Black and white at rest to match the ink portrait; colour comes back on hover/focus
+       (and the lightbox always shows the full-colour photo). */
+    filter: grayscale(1) contrast(1.08);
+    transition: filter .15s ease;
+}
+
+.postcard:hover img,
+.postcard:focus-visible img {
+    filter: none;
 }
 
 .postcard span {
