@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { usePostcardLauncher } from "./usePostcardLauncher";
 import DecodeText from "../DecodeText";
 import QuoteBlock from "../QuoteBlock";
+import { CONTACT_EMAIL } from "../../src/sendPostcard";
 
 // The postcard modal (and its styles and handwriting font) only loads once someone heads for the button.
 const loadPostcardModal = () => import("./postcard/PostcardModal");
@@ -16,18 +17,27 @@ const ContactSection = () => {
       <DecodeText className="section-label" text="04 / Get in touch" />
       <div className="contact-stage">
         <h2>Have something meaningful to build?</h2>
+        {/* The serious door: a plain email. */}
+        <a className="contact-cta" href={`mailto:${CONTACT_EMAIL}`}>
+          <span className="contact-cta-text">Let’s talk</span><span className="contact-cta-arrow" aria-hidden="true">↗</span>
+        </a>
+        <span className="contact-email">{CONTACT_EMAIL}</span>
+        {/* The playful door: a postcard, styled like one (stamp, perforated edge, slight tilt). */}
         <button
           type="button"
-          className="contact-cta"
+          className="postcard-cta"
           aria-haspopup="dialog"
           onClick={postcard.show}
           onPointerEnter={loadPostcardModal}
           onFocus={loadPostcardModal}
           onTouchStart={loadPostcardModal}
         >
-          <span className="contact-cta-text">Let’s talk</span><span className="contact-cta-arrow" aria-hidden="true">↗</span>
+          <img className="postcard-cta-stamp" src="/trips/goa-sm.jpg" alt="" width="34" height="42" loading="lazy" />
+          <span className="postcard-cta-text">
+            <span className="postcard-cta-title">Send me a postcard</span>
+            <span className="postcard-cta-sub">travel tips &amp; playlists welcome</span>
+          </span>
         </button>
-        <p className="contact-note">Always happy to talk code, swap travel tips, or share a playlist.</p>
       </div>
       <QuoteBlock />
       <div className="contact-footer">

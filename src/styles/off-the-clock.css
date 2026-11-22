@@ -135,14 +135,17 @@
     border-color: #fff;
 }
 
-@media (max-width:680px) {
+/* The overlapping fan is ~1120px wide, so below ~1200px (tablets, phones) it becomes a swipeable
+   strip that bleeds to the screen edges; otherwise the page's overflow-x clip cuts the ends off. */
+@media (max-width:1199px) {
     .postcards {
         justify-content: flex-start;
         gap: 12px;
-        margin: 0 -20px;
-        padding: 8px 20px 16px;
+        margin: 0 -32px;
+        padding: 8px 32px 16px;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
+        scroll-padding-inline: 32px;
     }
 
     .postcards li,
@@ -155,5 +158,19 @@
     .postcard {
         width: 168px;
         transform: none;
+    }
+
+    /* A scroll container clips overflow, so keep the hover lift inside the strip's top padding. */
+    .postcard:hover,
+    .postcard:focus-visible {
+        transform: translateY(-6px);
+    }
+}
+
+@media (max-width:680px) {
+    .postcards {
+        margin: 0 -20px;
+        padding: 8px 20px 16px;
+        scroll-padding-inline: 20px;
     }
 }

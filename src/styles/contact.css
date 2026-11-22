@@ -73,7 +73,7 @@
     color: rgba(255, 255, 255, .45);
 }
 
-/* Centred stage: a modest question, then "Let's talk" as the largest thing in the section. */
+/* Centred stage: a modest question, "Let's talk" (email) as the largest thing, then the postcard. */
 .contact-stage {
     display: flex;
     flex-direction: column;
@@ -102,12 +102,9 @@
     font-weight: 500;
     letter-spacing: -.055em;
     line-height: 1;
-    /* It's a <button> (opens the postcard), so drop the browser's button chrome. */
-    padding: 0;
-    border: 0;
-    background: none;
+    /* A mailto link styled as a headline. */
     color: inherit;
-    font-family: inherit;
+    text-decoration: none;
 }
 
 /* No resting underline: a thin cobalt line draws in from the left on hover. */
@@ -141,10 +138,72 @@
     border-radius: 4px;
 }
 
-.contact-note {
-    margin: 28px 0 0;
+/* Copyable address under "Let's talk", for anyone who'd rather paste it than open a mail app. */
+.contact-email {
+    margin-top: 14px;
     color: var(--muted);
-    font-size: 17px;
+    font: 13px "Geist Mono", ui-monospace, monospace;
+    overflow-wrap: anywhere;
+    user-select: all;
+}
+
+/* The playful door: a small postcard with a trip-photo stamp, a perforated edge and a slight tilt
+   that straightens on hover. Solid paper so it reads over the scenery photo in either theme. */
+.postcard-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 40px;
+    padding: 10px 16px 10px 10px;
+    border: 1.5px dashed color-mix(in srgb, var(--muted) 55%, transparent);
+    border-radius: 6px;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    transform: rotate(-2deg);
+    box-shadow: 0 6px 18px rgba(10, 10, 11, .08);
+    transition: transform .35s cubic-bezier(.2, .7, .2, 1), box-shadow .35s, border-color .35s;
+}
+
+.postcard-cta:hover,
+.postcard-cta:focus-visible {
+    transform: rotate(0) translateY(-2px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 26px rgba(10, 10, 11, .12);
+}
+
+.postcard-cta:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+.postcard-cta-stamp {
+    flex: none;
+    width: 34px;
+    height: 42px;
+    object-fit: cover;
+    border: 2px solid var(--paper);
+    outline: 1px dashed color-mix(in srgb, var(--muted) 60%, transparent);
+    transform: rotate(4deg);
+}
+
+.postcard-cta-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.postcard-cta-title {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -.01em;
+}
+
+.postcard-cta-sub {
+    color: var(--muted);
+    font: 11px "Geist Mono", ui-monospace, monospace;
 }
 
 /* Kept muted on purpose: "Let's talk" is the one thing this section should pull the eye to. */
@@ -213,7 +272,8 @@
 
     .contact-cta,
     .contact-cta-text,
-    .contact-cta-arrow {
+    .contact-cta-arrow,
+    .postcard-cta {
         transition: none;
     }
 }
