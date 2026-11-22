@@ -30,4 +30,9 @@ export default [
       ],
     },
   },
+  {
+    // Vercel Functions run on Node, not in the browser.
+    files: ['api/**/*.js'],
+    languageOptions: { globals: globals.node },
+  },
 ]
