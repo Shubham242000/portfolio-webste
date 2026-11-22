@@ -26,7 +26,8 @@ function geoHeader(request, name) {
 const json = (body, status) => Response.json(body, { status });
 
 export async function POST(request) {
-  const { VITE_POSTCARD_ENDPOINT: POSTCARD_ENDPOINT, VITE_SUPABASE_PUBLISHABLE_KEY: SUPABASE_KEY } = process.env;
+  const { POSTCARD_ENDPOINT, SUPABASE_KEY } = process.env;
+  // above is from vercel dashboard env, not from this repo. 
   if (!POSTCARD_ENDPOINT || !SUPABASE_KEY) return json({ error: "Postcards aren't configured" }, 500);
 
   let body;
