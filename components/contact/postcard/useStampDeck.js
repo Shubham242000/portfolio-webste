@@ -12,8 +12,8 @@ const cards = postcards.map((card, index) => ({
   tilt: CARD_TILT[index % CARD_TILT.length],
 }));
 
-// The chosen stamp (which also colours the card), changed from the picker or the "Change stamp"
-// button. The outgoing card animates away before the next one shows.
+// The chosen stamp, changed by tapping the stamp on the card or the "Change stamp" button.
+// The outgoing card animates away before the next one shows.
 export const useStampDeck = () => {
   const reduced = useReducedMotion();
   const leaveTimer = useRef(null);
@@ -41,16 +41,11 @@ export const useStampDeck = () => {
     cards,
     card,
     index,
-    behind: [cards[(index + 1) % cards.length], cards[(index + 2) % cards.length]],
     shuffling: Boolean(leaving),
     pick,
     shuffle: () => pick((index + 1) % cards.length),
     cardClass: leaving ? "pc-card is-leaving" : "pc-card",
     cardStyle: {
-      "--pc-paper": card.paper,
-      "--pc-ink": card.ink,
-      "--pc-accent": card.accent,
-      "--pc-line": card.line,
       "--pc-tilt": `${card.tilt}deg`,
       "--pc-leave": leaving,
     },

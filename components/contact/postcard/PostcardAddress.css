@@ -58,7 +58,7 @@
     font: 24px/36px "Caveat", cursive;
 }
 
-/* Phone: a bottom sheet with an upright card and a stamp picker */
+/* Phone: a bottom sheet with an upright card */
 @media (max-width: 719px) {
     .pc-from {
         margin-top: 12px;

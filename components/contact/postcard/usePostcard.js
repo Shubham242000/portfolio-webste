@@ -5,7 +5,7 @@ import { useScrollLock } from "../../../src/hooks/useScrollLock";
 import { useStampDeck } from "./useStampDeck";
 
 // The handwriting face is only needed once the modal opens, and this module is lazy-loaded with it,
-// so visitors who never click "Let's talk" don't pay for it.
+// so visitors who never open the postcard don't pay for it.
 const HANDWRITING_FONT = "https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap";
 if (!document.querySelector(`link[href="${HANDWRITING_FONT}"]`)) {
   const link = document.createElement("link");

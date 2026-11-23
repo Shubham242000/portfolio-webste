@@ -63,6 +63,42 @@
     gap: 4px;
 }
 
+/* Before sending, the stamp is a button that swaps in the next trip photo. A small ↻ badge in the
+   corner hints at that, mainly for phones, which have no "Change stamp" button. */
+.pc-stamp--button {
+    color: inherit;
+    font: inherit;
+    text-align: inherit;
+    cursor: pointer;
+    transition: transform .25s cubic-bezier(.2, .7, .2, 1);
+}
+
+.pc-stamp--button:hover {
+    transform: rotate(0) scale(1.04);
+}
+
+.pc-stamp--button::after {
+    content: "↻";
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--pc-ink);
+    color: var(--pc-paper);
+    font: 500 13px/1 "Geist", system-ui, sans-serif;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pc-stamp--button {
+        transition: none;
+    }
+}
+
 .pc-stamp img {
     display: block;
     width: 100%;
@@ -96,7 +132,7 @@
     transform: rotate(-16deg);
 }
 
-/* Phone: a bottom sheet with an upright card and a stamp picker */
+/* Phone: a bottom sheet with an upright card */
 @media (max-width: 719px) {
     .pc-mark {
         height: 88px;

@@ -1,7 +1,8 @@
 // This stylesheet must load before the parts' stylesheets: their rules override some of its shared ones.
 import "./PostcardModal.css";
 import { MAX_LENGTH, usePostcard } from "./usePostcard";
-import StampPicker from "./StampPicker";
+
+const COUNT_FROM = 100;
 import PostcardMark from "./PostcardMark";
 import PostcardAddress from "./PostcardAddress";
 import PostcardActions from "./PostcardActions";
@@ -23,19 +24,14 @@ const PostcardModal = ({ open, onClose }) => {
         <header className="pc-head">
           <div>
             <span className="pc-eyebrow">04 / Get in touch</span>
-            <h2 id="pc-title">Send me a postcard</h2>
+            <h2 id="pc-title">Write me a postcard</h2>
           </div>
           <button type="button" className="pc-close" onClick={postcard.close} aria-label="Close">
             <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" /></svg>
           </button>
         </header>
 
-        {!sent && <StampPicker cards={deck.cards} index={deck.index} onPick={deck.pick} />}
-
         <div className="pc-stack">
-          <div className="pc-back pc-back--2" style={{ background: deck.behind[1].paper }} aria-hidden="true" />
-          <div className="pc-back pc-back--1" style={{ background: deck.behind[0].paper }} aria-hidden="true" />
-
           <div className={deck.cardClass} style={deck.cardStyle}>
             <span className="pc-label">{postcard.label}</span>
             <h3 className="pc-greeting">{postcard.greeting}</h3>
@@ -53,13 +49,14 @@ const PostcardModal = ({ open, onClose }) => {
                     onChange={(event) => postcard.setMessage(event.target.value)}
                     placeholder="A project, a role, a travel tip, a playlist — or just hello…"
                   />
-                  <span className="pc-count" aria-hidden="true">{postcard.message.length}/{MAX_LENGTH}</span>
+                  {/* Only shows once the limit is close. */}
+                  {postcard.message.length >= MAX_LENGTH - COUNT_FROM && <span className="pc-count" aria-hidden="true">{postcard.message.length}/{MAX_LENGTH}</span>}
                 </>}
             </div>
 
             <div className="pc-divider" aria-hidden="true" />
 
-            <PostcardMark card={deck.card} postmark={postcard.postmark} sent={sent} />
+            <PostcardMark card={deck.card} postmark={postcard.postmark} sent={sent} shuffling={deck.shuffling} onShuffle={deck.shuffle} />
 
             <PostcardAddress
               sent={sent}

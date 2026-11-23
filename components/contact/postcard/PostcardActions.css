@@ -116,9 +116,9 @@
     outline-offset: 3px;
 }
 
-/* Phone: a bottom sheet with an upright card and a stamp picker */
+/* Phone: a bottom sheet with an upright card */
 @media (max-width: 719px) {
-    /* Changing stamps happens in the picker above the card on phones. */
+    /* On phones, stamps change by tapping the stamp on the card. */
     .pc-shuffle {
         display: none;
     }

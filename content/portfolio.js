@@ -20,15 +20,15 @@ export const postcards = [
 ];
 
 // The "Let's talk" postcard: each trip photo above doubles as a stamp, keyed by `file`.
-// `paper`/`ink`/`accent`/`line` colour the card when that stamp is chosen; `short` fits long names on small stamps.
+// `greeting` heads the card when that stamp is chosen; `short` fits long names on small stamps.
 export const stamps = {
-  lansdowne: { greeting: "Long time, no write.", paper: "#E6E2EE", ink: "#2A2540", accent: "#5B4B8A", line: "rgba(42, 37, 64, .2)" },
-  kodaikanal: { greeting: "Hello from the other tab.", paper: "#E3E8DA", ink: "#23332B", accent: "#2F6F5E", line: "rgba(35, 51, 43, .22)" },
-  pondicherry: { greeting: "Postage paid. Words welcome.", paper: "#F5E7C6", ink: "#3B2A14", accent: "#8F5410", line: "rgba(59, 42, 20, .22)" },
-  goa: { greeting: "Wish you were here.", paper: "#F4EEDF", ink: "#1F2A44", accent: "#A8432F", line: "rgba(31, 42, 68, .2)" },
-  thailand: { greeting: "Got a minute? Write me.", paper: "#DCE6EE", ink: "#1D2B3A", accent: "#2F54EB", line: "rgba(29, 43, 58, .2)" },
-  mysore: { greeting: "Say hi, I’ll say hi back.", paper: "#E9E4DC", ink: "#2E2A26", accent: "#7A4E2D", line: "rgba(46, 42, 38, .2)" },
-  chikkamagaluru: { greeting: "A note, sealed and stamped.", paper: "#F3E1DA", ink: "#3A2230", accent: "#9E3A37", line: "rgba(58, 34, 48, .2)", short: "Chikmagalur" },
+  lansdowne: { greeting: "Long time, no write." },
+  kodaikanal: { greeting: "Hello from the other tab." },
+  pondicherry: { greeting: "Postage paid. Words welcome." },
+  goa: { greeting: "Wish you were here." },
+  thailand: { greeting: "Got a minute? Write me." },
+  mysore: { greeting: "Say hi, I’ll say hi back." },
+  chikkamagaluru: { greeting: "A note, sealed and stamped.", short: "Chikmagalur" },
 };
 
 export const capabilities = [

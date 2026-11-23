@@ -23,7 +23,7 @@ const ContactSection = () => {
         </a>
         <span className="contact-email">{CONTACT_EMAIL}</span>
         <span className="contact-or" aria-hidden="true">or</span>
-        {/* The playful door: a postcard, styled like one (stamp, perforated edge, slight tilt). */}
+        {/* The playful door: a mini version of the postcard it opens (paper, postmark waves, stamp). */}
         <button
           type="button"
           className="postcard-cta"
@@ -33,11 +33,14 @@ const ContactSection = () => {
           onFocus={loadPostcardModal}
           onTouchStart={loadPostcardModal}
         >
-          <img className="postcard-cta-stamp" src="/trips/goa-sm.jpg" alt="" width="34" height="42" loading="lazy" />
           <span className="postcard-cta-text">
             <span className="postcard-cta-title">Write me a postcard</span>
             <span className="postcard-cta-sub">travel tips &amp; playlists welcome</span>
           </span>
+          <svg className="postcard-cta-waves" viewBox="0 0 40 20" aria-hidden="true">
+            <path d="M0 4c4-3 8 3 12 0s8 3 12 0 8 3 12 0M0 10c4-3 8 3 12 0s8 3 12 0 8 3 12 0M0 16c4-3 8 3 12 0s8 3 12 0 8 3 12 0" />
+          </svg>
+          <span className="postcard-cta-stamp" aria-hidden="true" />
         </button>
       </div>
       <QuoteBlock />

@@ -167,31 +167,37 @@
     background: var(--line);
 }
 
-/* The playful door: a small postcard with a trip-photo stamp, a perforated edge and a slight tilt
-   that straightens on hover. Solid paper so it reads over the scenery photo in either theme. */
+/* The playful door: a mini version of the postcard the modal opens (same off-white paper in both
+   themes, ink text), with postmark waves and a watercolour stamp, a perforated edge and a slight
+   tilt that straightens on hover. */
 .postcard-cta {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
     margin-top: 20px;
-    padding: 10px 16px 10px 10px;
-    border: 1.5px dashed color-mix(in srgb, var(--muted) 55%, transparent);
+    padding: 12px 14px 12px 20px;
+    border: 1.5px dashed rgba(10, 10, 11, .22);
     border-radius: 6px;
-    background: var(--paper);
-    color: var(--ink);
+    background: #fcfcfb;
+    color: #0a0a0b;
     font-family: inherit;
     text-align: left;
     cursor: pointer;
     transform: rotate(-2deg);
-    box-shadow: 0 6px 18px rgba(10, 10, 11, .08);
+    box-shadow: 0 6px 18px rgba(10, 10, 11, .14);
     transition: transform .35s cubic-bezier(.2, .7, .2, 1), box-shadow .35s, border-color .35s;
+}
+
+:root[data-theme="dark"] .postcard-cta {
+    border-color: rgba(10, 10, 11, .3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .5);
 }
 
 .postcard-cta:hover,
 .postcard-cta:focus-visible {
     transform: rotate(0) translateY(-2px);
     border-color: var(--accent);
-    box-shadow: 0 10px 26px rgba(10, 10, 11, .12);
+    box-shadow: 0 10px 26px rgba(10, 10, 11, .2);
 }
 
 .postcard-cta:focus-visible {
@@ -199,14 +205,37 @@
     outline-offset: 4px;
 }
 
+.postcard-cta-waves {
+    flex: none;
+    width: 32px;
+    height: 16px;
+    margin-left: 4px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.2;
+    opacity: .35;
+}
+
+/* Watercolour (light) / slate ink (dark) in a white perforated frame, like the stamp on the card. */
 .postcard-cta-stamp {
     flex: none;
     width: 34px;
-    height: 42px;
-    object-fit: cover;
-    border: 2px solid var(--paper);
-    outline: 1px dashed color-mix(in srgb, var(--muted) 60%, transparent);
+    height: 40px;
+    padding: 3px;
+    border: 3px dotted #fcfcfb;
+    background: #fff url("/postcard-cta-light.jpg") center / cover content-box;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .22);
     transform: rotate(4deg);
+    transition: transform .35s cubic-bezier(.2, .7, .2, 1);
+}
+
+:root[data-theme="dark"] .postcard-cta-stamp {
+    background-image: url("/postcard-cta-dark.jpg");
+}
+
+.postcard-cta:hover .postcard-cta-stamp,
+.postcard-cta:focus-visible .postcard-cta-stamp {
+    transform: rotate(-3deg) scale(1.06);
 }
 
 .postcard-cta-text {
@@ -222,7 +251,7 @@
 }
 
 .postcard-cta-sub {
-    color: var(--muted);
+    color: rgba(10, 10, 11, .6);
     font: 11px "Geist Mono", ui-monospace, monospace;
 }
 
@@ -285,6 +314,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .quote blockquote,
     .quote-skeleton {
         animation: none;
@@ -293,7 +323,8 @@
     .contact-cta,
     .contact-cta-text,
     .contact-cta-arrow,
-    .postcard-cta {
+    .postcard-cta,
+    .postcard-cta-stamp {
         transition: none;
     }
 }

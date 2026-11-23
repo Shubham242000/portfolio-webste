@@ -1,6 +1,6 @@
-/* "Let's talk" postcard. Loaded with the modal, so none of this ships until someone clicks.
-   The chrome around the card follows the site theme through the --pc-* tokens below (the dark
-   values are the modal's original colours); the card keeps its own per-stamp paper in both themes. */
+/* "Write me a postcard" modal. Loaded with the modal, so none of this ships until someone clicks.
+   The chrome around the card follows the site theme through the --pc-* tokens below; the card itself
+   is one plain paper in both themes (ink text, cobalt accent), so the trip-photo stamp is its only colour. */
 
 .pc-dialog {
     --pc-fg: #0a0a0b;
@@ -17,9 +17,6 @@
     --pc-error: #d23f57;
     --pc-focus: #2f54eb;
     --pc-shadow-card: 0 24px 60px rgba(20, 24, 40, .22);
-    --pc-shadow-back: 0 10px 30px rgba(20, 24, 40, .14);
-    --pc-shadow-option: 0 2px 6px rgba(20, 24, 40, .2);
-    --pc-shadow-option-on: 0 8px 18px rgba(20, 24, 40, .25);
 }
 
 :root[data-theme="dark"] .pc-dialog {
@@ -37,9 +34,6 @@
     --pc-error: #f2a7b4;
     --pc-focus: #7d95ff;
     --pc-shadow-card: 0 24px 60px rgba(0, 0, 0, .6);
-    --pc-shadow-back: 0 10px 30px rgba(0, 0, 0, .5);
-    --pc-shadow-option: 0 2px 6px rgba(0, 0, 0, .4);
-    --pc-shadow-option-on: 0 8px 18px rgba(0, 0, 0, .5);
 }
 
 .pc-dialog {
@@ -122,29 +116,16 @@
     stroke-linecap: round;
 }
 
-/* The card and the two cards peeking out behind it */
 .pc-stack {
     position: relative;
     margin-top: 22px;
 }
 
-.pc-back {
-    position: absolute;
-    inset: 0;
-    border-radius: 4px;
-    box-shadow: var(--pc-shadow-back);
-    transition: background .4s ease;
-}
-
-.pc-back--1 {
-    transform: rotate(-2.6deg) translate(-8px, 4px);
-}
-
-.pc-back--2 {
-    transform: rotate(3.4deg) translate(10px, 6px);
-}
-
 .pc-card {
+    --pc-paper: #fcfcfb;
+    --pc-ink: #0a0a0b;
+    --pc-accent: #2f54eb;
+    --pc-line: rgba(10, 10, 11, .12);
     position: relative;
     height: 480px;
     padding: 32px 36px;
@@ -162,7 +143,7 @@
         "message divider from";
     column-gap: 30px;
     transform: rotate(var(--pc-tilt));
-    transition: transform .32s cubic-bezier(.3, .7, .2, 1), opacity .32s ease, background .3s ease;
+    transition: transform .32s cubic-bezier(.3, .7, .2, 1), opacity .32s ease;
 }
 
 .pc-card.is-leaving {
@@ -241,7 +222,7 @@ textarea.pc-lines:focus {
     outline-offset: 3px;
 }
 
-/* Phone: a bottom sheet with an upright card and a stamp picker */
+/* Phone: a bottom sheet with an upright card */
 @media (max-width: 719px) {
     .pc-dialog {
         width: 100%;
@@ -281,7 +262,7 @@ textarea.pc-lines:focus {
         flex-direction: column;
     }
 
-    /* Header, picker and buttons keep their size; the card stack takes whatever height is left. */
+    /* Header and buttons keep their size; the card takes whatever height is left. */
     .pc-scroll>* {
         flex-shrink: 0;
     }
@@ -304,14 +285,6 @@ textarea.pc-lines:focus {
         display: flex;
         flex-direction: column;
         margin-top: 12px;
-    }
-
-    .pc-back--1 {
-        transform: rotate(-1.6deg) translate(-4px, 2px);
-    }
-
-    .pc-back--2 {
-        transform: rotate(2.2deg) translate(5px, 4px);
     }
 
     .pc-card {
@@ -366,8 +339,7 @@ textarea.pc-lines:focus {
 @media (prefers-reduced-motion: reduce) {
 
     .pc-card,
-    .pc-card.is-leaving,
-    .pc-back {
+    .pc-card.is-leaving {
         transition: none;
     }
 }
