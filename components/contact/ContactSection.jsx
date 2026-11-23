@@ -22,6 +22,7 @@ const ContactSection = () => {
           <span className="contact-cta-text">Let’s talk</span><span className="contact-cta-arrow" aria-hidden="true">↗</span>
         </a>
         <span className="contact-email">{CONTACT_EMAIL}</span>
+        <span className="contact-or" aria-hidden="true">or</span>
         {/* The playful door: a postcard, styled like one (stamp, perforated edge, slight tilt). */}
         <button
           type="button"
@@ -34,7 +35,7 @@ const ContactSection = () => {
         >
           <img className="postcard-cta-stamp" src="/trips/goa-sm.jpg" alt="" width="34" height="42" loading="lazy" />
           <span className="postcard-cta-text">
-            <span className="postcard-cta-title">Send me a postcard</span>
+            <span className="postcard-cta-title">Write me a postcard</span>
             <span className="postcard-cta-sub">travel tips &amp; playlists welcome</span>
           </span>
         </button>

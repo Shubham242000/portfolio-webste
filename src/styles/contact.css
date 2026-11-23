@@ -147,13 +147,33 @@
     user-select: all;
 }
 
+/* "or" between the two doors, with hairlines either side so it reads as a choice, not a sentence. */
+.contact-or {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 32px;
+    color: var(--muted);
+    font: 12px "Geist Mono", ui-monospace, monospace;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+}
+
+.contact-or::before,
+.contact-or::after {
+    content: "";
+    width: 40px;
+    height: 1px;
+    background: var(--line);
+}
+
 /* The playful door: a small postcard with a trip-photo stamp, a perforated edge and a slight tilt
    that straightens on hover. Solid paper so it reads over the scenery photo in either theme. */
 .postcard-cta {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    margin-top: 40px;
+    margin-top: 20px;
     padding: 10px 16px 10px 10px;
     border: 1.5px dashed color-mix(in srgb, var(--muted) 55%, transparent);
     border-radius: 6px;
