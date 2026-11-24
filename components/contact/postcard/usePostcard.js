@@ -56,16 +56,20 @@ export const usePostcard = ({ open, onClose }) => {
   // Editing any field clears the last error.
   const edit = (setter) => (value) => { setter(value); setError(""); };
 
-  const send = async (anonymous) => {
+  // Name and email are both optional: the visitor sends whatever they filled in. An email that's
+  // there but malformed is the only thing that blocks sending, since a reply could never reach it.
+  const send = async () => {
     if (status === "sending") return;
     const text = message.trim();
+    const from = name.trim();
+    const replyTo = email.trim();
     if (!text) {
       setError("Write a line or two first.");
       messageRef.current?.focus();
       return;
     }
-    if (!anonymous && (!name.trim() || !isEmail(email.trim()))) {
-      setError("Add your name and email, or send it anonymously.");
+    if (replyTo && !isEmail(replyTo)) {
+      setError("That email doesn’t look right. Fix it, or leave it blank.");
       return;
     }
 
@@ -74,10 +78,10 @@ export const usePostcard = ({ open, onClose }) => {
     try {
       await sendPostcard({
         message: text,
-        name: anonymous ? null : name.trim(),
-        email: anonymous ? null : email.trim(),
+        name: from || null,
+        email: replyTo || null,
       });
-      setSentAs({ anonymous, name: anonymous ? "" : name.trim() });
+      setSentAs({ name: from, replyable: Boolean(replyTo) });
       setStatus("sent");
     } catch {
       setStatus("idle");
@@ -121,9 +125,9 @@ export const usePostcard = ({ open, onClose }) => {
     sentAs,
     label: sent ? `Delivered · ${postmark.date}` : `Postcard no. ${deck.card.no} · Stamp: ${deck.card.place}`,
     greeting: sent ? "Off it goes." : deck.card.greeting,
-    sentText: `${quoted && `“${quoted}” — `}${sentAs?.anonymous
-      ? "No return address on this one, but I’ll read it."
-      : `Thanks${firstName ? `, ${firstName}` : ""}. I’ll write back to the address you left.`}`,
+    sentText: `${quoted && `“${quoted}” — `}Thanks${firstName ? `, ${firstName}` : ""}. ${sentAs?.replyable
+      ? "I’ll write back to the address you left."
+      : "No return address on this one, but I’ll read it."}`,
     send,
     writeAnother,
     close,

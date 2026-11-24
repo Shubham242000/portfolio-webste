@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { usePostcardLauncher } from "./usePostcardLauncher";
 import DecodeText from "../DecodeText";
 import QuoteBlock from "../QuoteBlock";
+import CopyEmail from "./CopyEmail";
 import { CONTACT_EMAIL } from "../../src/sendPostcard";
 
 // The postcard modal (and its styles and handwriting font) only loads once someone heads for the button.
@@ -21,7 +22,7 @@ const ContactSection = () => {
         <a className="contact-cta" href={`mailto:${CONTACT_EMAIL}`}>
           <span className="contact-cta-text">Let’s talk</span><span className="contact-cta-arrow" aria-hidden="true">↗</span>
         </a>
-        <span className="contact-email">{CONTACT_EMAIL}</span>
+        <CopyEmail email={CONTACT_EMAIL} />
         <span className="contact-or" aria-hidden="true">or</span>
         {/* The playful door: a mini version of the postcard it opens (paper, postmark waves, stamp). */}
         <button

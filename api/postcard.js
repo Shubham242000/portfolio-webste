@@ -6,8 +6,8 @@
 //   VITE_POSTCARD_ENDPOINT         https://<project>.supabase.co/rest/v1/messages
 //   VITE_SUPABASE_PUBLISHABLE_KEY  the project's publishable key (RLS still allows only inserts)
 //
-// Location comes from the request IP, so it's approximate (and wrong behind a VPN). Anonymous
-// postcards only keep the country, so "Send anonymously" stays meaningfully anonymous.
+// Location comes from the request IP, so it's approximate (and wrong behind a VPN). Postcards with
+// no name and no email only keep the country, so leaving both blank stays meaningfully anonymous.
 
 const MAX_MESSAGE = 5000;
 const MAX_FIELD = 200;

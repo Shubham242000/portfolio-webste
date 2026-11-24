@@ -1,6 +1,6 @@
 // Where postcards from the "Let's talk" modal go: POSTed as JSON { message, name, email } to the
 // Vercel Function in api/postcard.js, which adds the sender's approximate location and stores the
-// row in Supabase. `name` and `email` are null when the visitor sends anonymously.
+// row in Supabase. `name` and `email` are each null when the visitor leaves them blank.
 //
 // Plain `npm run dev` (Vite) doesn't serve /api, so in dev a missing endpoint is treated as a
 // pretend send (the payload is logged) and the flow can still be tried end to end. Use `vercel dev`

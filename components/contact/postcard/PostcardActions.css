@@ -64,18 +64,6 @@
     background: var(--pc-btn-hover);
 }
 
-.pc-btn--outline {
-    border-color: var(--pc-edge-30);
-    background: none;
-    color: var(--pc-fg);
-    font-weight: 500;
-}
-
-.pc-btn--outline:hover {
-    border-color: var(--pc-fg);
-    background: none;
-}
-
 .pc-btn:disabled,
 .pc-ghost:disabled {
     opacity: .6;
@@ -135,7 +123,7 @@
         background: var(--pc-sheet);
     }
 
-    /* Buttons share one row: two halves (send anonymously / sign & send, or write another / close). */
+    /* Buttons share one row (just "Send" before sending; write another / close after). */
     .pc-send,
     .pc-actions .pc-ghost {
         flex: 1 1 0;
@@ -152,17 +140,6 @@
         padding: 0 10px;
         font-size: 14px;
         font-weight: 500;
-    }
-
-    /* Secondary actions are plain text on phones; only the main action is a filled button. */
-    .pc-btn--outline {
-        border-color: transparent;
-        color: var(--pc-muted);
-    }
-
-    .pc-btn--outline:hover {
-        border-color: transparent;
-        color: var(--pc-fg);
     }
 
     .pc-actions .pc-ghost {

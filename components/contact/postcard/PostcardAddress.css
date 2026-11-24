@@ -59,6 +59,11 @@
 }
 
 /* Phone: a bottom sheet with an upright card */
+/* Says once, on the heading, that both fields can be left blank. */
+.pc-optional {
+    opacity: .55;
+}
+
 @media (max-width: 719px) {
     .pc-from {
         margin-top: 12px;

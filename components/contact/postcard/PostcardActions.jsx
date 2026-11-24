@@ -17,9 +17,8 @@ const PostcardActions = ({ sent, sending, shuffling, index, total, error, onShuf
         <span className="pc-shuffle-count">{index + 1}/{total}</span>
       </button>
       <div className="pc-send">
-        <button type="button" className="pc-btn pc-btn--outline" onClick={() => onSend(true)} disabled={sending}>Send anonymously</button>
-        <button type="button" className="pc-btn" onClick={() => onSend(false)} disabled={sending}>
-          {sending ? "Sending…" : "Sign & send"}
+        <button type="button" className="pc-btn" onClick={onSend} disabled={sending}>
+          {sending ? "Sending…" : "Send"}
           {!sending && <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6" /></svg>}
         </button>
       </div>

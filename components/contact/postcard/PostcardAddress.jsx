@@ -2,9 +2,9 @@ import "./PostcardAddress.css";
 
 // Right-hand side of the card: the sender's name/email (or how it was signed, once sent).
 const PostcardAddress = ({ sent, sentAs, name, email, onNameChange, onEmailChange }) => <div className="pc-from">
-  <span className="pc-small">From</span>
+  <span className="pc-small">From{!sent && <span className="pc-optional"> · optional</span>}</span>
   {sent
-    ? <span className="pc-from-sent">{sentAs?.anonymous ? "Anonymous" : sentAs?.name}</span>
+    ? <span className="pc-from-sent">{sentAs?.name || "Anonymous"}</span>
     : <>
       <label className="pc-field">
         <span>Name</span>
